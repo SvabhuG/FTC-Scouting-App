@@ -61,6 +61,9 @@ public class autonFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 auton_skystones_val--;
+                if (auton_skystones_val<0){
+                    auton_skystones_val = 0;
+                }
                 auton_skystones_val_text.setText(String.valueOf(auton_skystones_val));
             }
         });
@@ -77,6 +80,9 @@ public class autonFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 auton_stones_val--;
+                if (auton_stones_val<0){
+                    auton_stones_val = 0;
+                }
                 auton_stones_val_text.setText(String.valueOf(auton_stones_val));
             }
         });
@@ -92,6 +98,9 @@ public class autonFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 auton_placing_val--;
+                if (auton_placing_val<0){
+                    auton_placing_val = 0;
+                }
                 auton_placing_val_text.setText(String.valueOf(auton_placing_val));
             }
         });

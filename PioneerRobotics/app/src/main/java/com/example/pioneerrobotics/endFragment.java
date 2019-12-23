@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,21 +28,46 @@ public class endFragment extends Fragment {
 
     Button end_capstone_add;
     Button end_capstone_minus;
+    Button submit_data;
     TextView end_capstone_val_text;
     public int end_capstone_val;
+    DatabaseReference mDatabase;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         View end_fragment= inflater.inflate(R.layout.fragment_end, container, false);
         end_capstone_add = end_fragment.findViewById(R.id.end_capstone_add);
+        end_capstone_minus = end_fragment.findViewById(R.id.end_capstone_minus);
         end_capstone_val_text = end_fragment.findViewById(R.id.end_capstones_val_text);
+        submit_data = end_fragment.findViewById(R.id.submit_data);
+
+        submit_data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDatabase.
+            }
+        });
+
 
         end_capstone_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 end_capstone_val++;
+                end_capstone_val_text.setText(String.valueOf(end_capstone_val));
+            }
+        });
+
+        end_capstone_minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                end_capstone_val--;
+                if (end_capstone_val<0){
+                    end_capstone_val = 0;
+                }
                 end_capstone_val_text.setText(String.valueOf(end_capstone_val));
             }
         });
@@ -127,4 +155,6 @@ public class endFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
 }

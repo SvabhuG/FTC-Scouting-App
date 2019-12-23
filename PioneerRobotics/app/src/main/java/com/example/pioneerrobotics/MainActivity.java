@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -15,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar,toolbartab;
     ViewPager viewPager;
     TabLayout tabLayout;
+
 
     PageAdapter pageAdapter;
 
@@ -37,5 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
 
+
     }
+
+
 }

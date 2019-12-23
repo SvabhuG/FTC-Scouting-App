@@ -58,6 +58,9 @@ public class teleFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 tele_delivered_val--;
+                if (tele_delivered_val<0){
+                    tele_delivered_val = 0;
+                }
                 tele_delivered_val_text.setText(String.valueOf(tele_delivered_val));
             }
         });
@@ -74,6 +77,9 @@ public class teleFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 tele_placed_val--;
+                if (tele_placed_val<0){
+                    tele_placed_val = 0;
+                }
                 tele_placed_val_text.setText(String.valueOf(tele_placed_val));
             }
         });
