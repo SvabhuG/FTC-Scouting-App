@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -16,6 +17,8 @@ public class GeneralTeamInfo extends AppCompatActivity {
 
     Toolbar toolbar,toolbartab;
     Button submit_info;
+    public static EditText teamName, teamNumber, event, scorer;
+
 
     PageAdapter pageAdapter;
 
@@ -26,6 +29,11 @@ public class GeneralTeamInfo extends AppCompatActivity {
 
         toolbar = (Toolbar)findViewById((R.id.toolbar));
         submit_info = (Button)findViewById(R.id.submit_info);
+        teamName = (EditText)findViewById(R.id.team_name);
+        teamNumber = (EditText)findViewById(R.id.team_number);
+        event = (EditText)findViewById(R.id.event);
+        scorer = (EditText)findViewById(R.id.scorer);
+
 
         submit_info.setOnClickListener(new View.OnClickListener() {
             @Override

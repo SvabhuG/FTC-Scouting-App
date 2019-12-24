@@ -101,8 +101,8 @@ public class endFragment extends Fragment {
         end_capstone_minus = end_fragment.findViewById(R.id.end_capstone_minus);
         end_capstone_val_text = end_fragment.findViewById(R.id.end_capstones_val_text);
         submit_data = end_fragment.findViewById(R.id.submit_data);
-
-/*        submit_data.setOnClickListener(new View.OnClickListener() {
+/*
+        submit_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mDatabase.
@@ -128,6 +128,11 @@ public class endFragment extends Fragment {
                 end_capstone_val_text.setText(String.valueOf(end_capstone_val));
             }
         });
+
+        private void addTeam{
+            int teamNumber = Integer.parseInt(String.valueOf(GeneralTeamInfo.teamNumber));
+            String teamName = String.valueOf(GeneralTeamInfo.teamNumber);
+        }
         return end_fragment;
     }
     // TODO: Rename parameter arguments, choose names that match

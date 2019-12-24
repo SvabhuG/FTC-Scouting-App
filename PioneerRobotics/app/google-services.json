@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "169451964996-5g6l5frta8bboterksmj6cc7g48jn9f4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pioneerrobotics",
+            "certificate_hash": "6d692713165eb257e58327b51b84db007c37f915"
+          }
+        },
+        {
           "client_id": "169451964996-66c4172inc48i6j61eb2rqq1snchl6k1.apps.googleusercontent.com",
           "client_type": 3
         }
