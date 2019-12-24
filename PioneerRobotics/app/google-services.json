@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "169451964996",
+    "firebase_url": "https://skystonescoring-89b1a.firebaseio.com",
+    "project_id": "skystonescoring-89b1a",
+    "storage_bucket": "skystonescoring-89b1a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:169451964996:android:747a3170a6ff68a1600a11",
+        "android_client_info": {
+          "package_name": "com.example.pioneerrobotics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "169451964996-66c4172inc48i6j61eb2rqq1snchl6k1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF-ckMmUbzUosI5tQqY9jG3Nh-v0m41_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "169451964996-66c4172inc48i6j61eb2rqq1snchl6k1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

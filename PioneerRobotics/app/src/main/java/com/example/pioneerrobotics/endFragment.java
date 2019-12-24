@@ -2,20 +2,30 @@ package com.example.pioneerrobotics;
 
 import android.content.Context;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
+
+import com.google.firebase.database.DataSnapshot;
+
+import com.google.firebase.database.DatabaseError;
+
+import com.google.firebase.database.DatabaseReference;
+
 import com.google.firebase.database.FirebaseDatabase;
 
-
+import com.google.firebase.database.ValueEventListener;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -25,6 +35,7 @@ import com.google.firebase.database.FirebaseDatabase;
  * create an instance of this fragment.
  */
 public class endFragment extends Fragment {
+    private static final String TAG = "endFragment";
 
     Button end_capstone_add;
     Button end_capstone_minus;
@@ -32,6 +43,52 @@ public class endFragment extends Fragment {
     TextView end_capstone_val_text;
     public int end_capstone_val;
     DatabaseReference mDatabase;
+    public void basicReadWrite() {
+
+        // [START write_message]
+
+        // Write a message to the database
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        DatabaseReference myRef = database.getReference("message");
+
+
+
+        myRef.setValue("Hello, World!");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+
+            @Override
+
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                // This method is called once with the initial value and again
+
+                // whenever data at this location is updated.
+
+                String value = dataSnapshot.getValue(String.class);
+
+                Log.d(TAG, "Value is: " + value);
+
+            }
+
+
+            @Override
+
+            public void onCancelled(DatabaseError error) {
+
+                // Failed to read value
+
+                Log.w(TAG, "Failed to read value.", error.toException());
+
+            }
+
+        });
+
+        // [END read_message]
+
+    }
 
 
     @Override
@@ -45,13 +102,13 @@ public class endFragment extends Fragment {
         end_capstone_val_text = end_fragment.findViewById(R.id.end_capstones_val_text);
         submit_data = end_fragment.findViewById(R.id.submit_data);
 
-        submit_data.setOnClickListener(new View.OnClickListener() {
+/*        submit_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mDatabase.
             }
         });
-
+*/
 
         end_capstone_add.setOnClickListener(new View.OnClickListener() {
             @Override

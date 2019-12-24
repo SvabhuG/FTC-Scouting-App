@@ -102,11 +102,12 @@
         android:id="@+id/auton_foundation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="368dp"
+        android:layout_marginTop="296dp"
         android:switchPadding="12dp"
         android:text="Foundation Moved"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
@@ -114,12 +115,11 @@
         android:id="@+id/foundation2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="436dp"
+        android:layout_marginTop="364dp"
         android:switchPadding="12dp"
         android:text="Parking"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
@@ -146,5 +146,13 @@
         android:textSize="24dp"
         app:layout_constraintEnd_toStartOf="@+id/end_capstone_add"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
+
+    <Button
+        android:id="@+id/submit_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit Data"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="540dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
