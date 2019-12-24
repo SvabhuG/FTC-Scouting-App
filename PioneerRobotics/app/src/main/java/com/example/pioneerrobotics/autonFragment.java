@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import java.util.zip.Inflater;
 
@@ -28,17 +30,28 @@ public class autonFragment extends Fragment {
     public Button auton_stones_minus;
     public Button auton_placing_add;
     public Button auton_placing_minus;
-    public int auton_skystones_val;
-    public int auton_stones_val;
-    public int auton_placing_val;
+    public static int auton_skystones_val;
+    public static int auton_stones_val;
+    public static int auton_placing_val;
     public TextView auton_skystones_val_text;
     public TextView auton_stones_val_text;
     public TextView auton_placing_val_text;
+    public Switch zone;
+    public Switch alliance;
+    public Switch auton_parking;
+    public Switch foundation;
+    public static String startSide;
+    public static String allianceSide;
+    public static boolean parked;
+    public static boolean foundationMoved;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View auton_fragment= inflater.inflate(R.layout.fragment_auton, container, false);
+
+        //Initialize buttons
         auton_skystones_add = auton_fragment.findViewById(R.id.auton_skystones_add);
         auton_skystones_minus = auton_fragment.findViewById(R.id.auton_skystones_minus);
         auton_stones_add = auton_fragment.findViewById(R.id.auton_stones_add);
@@ -48,6 +61,14 @@ public class autonFragment extends Fragment {
         auton_skystones_val_text = auton_fragment.findViewById(R.id.auton_skystones_val_text);
         auton_stones_val_text = auton_fragment.findViewById(R.id.auton_stones_val_text);
         auton_placing_val_text = auton_fragment.findViewById(R.id.auton_placing_val_text);
+
+        //Initialize switches
+        zone = auton_fragment.findViewById(R.id.zone);
+        alliance = auton_fragment.findViewById(R.id.alliance);
+        auton_parking = auton_fragment.findViewById(R.id.auton_parking);
+        foundation = auton_fragment.findViewById(R.id.auton_foundation);
+
+        //Buttons listening for clicks
 
         auton_skystones_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +123,48 @@ public class autonFragment extends Fragment {
                     auton_placing_val = 0;
                 }
                 auton_placing_val_text.setText(String.valueOf(auton_placing_val));
+            }
+        });
+
+        //Switches looking for changes in state
+
+        zone.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                        startSide = "Loading";
+                } else {
+                       startSide = "Building";
+                }
+            }
+        });
+
+        alliance.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    allianceSide = "Blue";
+                } else {
+                    allianceSide = "Red";
+                }
+            }
+        });
+
+        auton_parking.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    parked = true;
+                } else {
+                    parked = false;
+                }
+            }
+        });
+
+        foundation.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    foundationMoved = true;
+                } else {
+                    foundationMoved = false;
+                }
             }
         });
 

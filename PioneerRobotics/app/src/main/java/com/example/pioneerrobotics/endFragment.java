@@ -1,5 +1,4 @@
 package com.example.pioneerrobotics;
-
 import android.content.Context;
 import android.net.Uri;
 import android.nfc.Tag;
@@ -7,11 +6,13 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -20,11 +21,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.DataSnapshot;
 
 import com.google.firebase.database.DatabaseError;
-
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.DatabaseReference;
 
 import com.google.firebase.database.FirebaseDatabase;
-
+import java.util.Map;
+import java.util.HashMap;
 import com.google.firebase.database.ValueEventListener;
 /**
  * A simple {@link Fragment} subclass.
@@ -42,73 +44,29 @@ public class endFragment extends Fragment {
     Button submit_data;
     TextView end_capstone_val_text;
     public int end_capstone_val;
-    DatabaseReference mDatabase;
-    public void basicReadWrite() {
+    DatabaseReference databaseTeam;
 
-        // [START write_message]
-
-        // Write a message to the database
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-        DatabaseReference myRef = database.getReference("message");
-
-
-
-        myRef.setValue("Hello, World!");
-
-        myRef.addValueEventListener(new ValueEventListener() {
-
-            @Override
-
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                // This method is called once with the initial value and again
-
-                // whenever data at this location is updated.
-
-                String value = dataSnapshot.getValue(String.class);
-
-                Log.d(TAG, "Value is: " + value);
-
-            }
-
-
-            @Override
-
-            public void onCancelled(DatabaseError error) {
-
-                // Failed to read value
-
-                Log.w(TAG, "Failed to read value.", error.toException());
-
-            }
-
-        });
-
-        // [END read_message]
-
-    }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        databaseTeam = FirebaseDatabase.getInstance().getReference("teams");
         // Inflate the layout for this fragment
-        mDatabase = FirebaseDatabase.getInstance().getReference();
         View end_fragment= inflater.inflate(R.layout.fragment_end, container, false);
         end_capstone_add = end_fragment.findViewById(R.id.end_capstone_add);
         end_capstone_minus = end_fragment.findViewById(R.id.end_capstone_minus);
         end_capstone_val_text = end_fragment.findViewById(R.id.end_capstones_val_text);
         submit_data = end_fragment.findViewById(R.id.submit_data);
-/*
+
         submit_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDatabase.
+                //addTeam();
+                writeNewPost();
             }
         });
-*/
+
 
         end_capstone_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,11 +87,59 @@ public class endFragment extends Fragment {
             }
         });
 
-        private void addTeam{
-            int teamNumber = Integer.parseInt(String.valueOf(GeneralTeamInfo.teamNumber));
-            String teamName = String.valueOf(GeneralTeamInfo.teamNumber);
-        }
+
         return end_fragment;
+    }
+
+    private void writeNewPost() {
+
+        // General team info
+        int teamNumber = Integer.parseInt(GeneralTeamInfo.teamNumber.getText().toString());
+        String teamName = GeneralTeamInfo.teamName.getText().toString();
+        String event = GeneralTeamInfo.event.getText().toString();
+        String scorer = GeneralTeamInfo.scorer.getText().toString();
+
+        //Finalize info data
+        DataSubmit info = new DataSubmit(teamName, teamNumber, event, scorer);
+        Map<String, Object> infoValues = info.toMap();
+
+
+        //Autonomous data
+        int skystonesDelivered = autonFragment.auton_skystones_val;
+        int stonesDelivered = autonFragment.auton_stones_val;
+        int stonesPlaced = autonFragment.auton_placing_val;
+        boolean foundationMoved = autonFragment.foundationMoved;
+        boolean parked = autonFragment.parked;
+        String alliance = autonFragment.allianceSide;
+        String startSide = autonFragment.startSide;
+
+        //Calculating autonomous score
+        int autonFoundationPoints = ((foundationMoved == true) ? 10:0);
+        int autonParkingPoints = ((parked == true) ? 5:0);
+        int autonScore = skystonesDelivered*10 + stonesDelivered*2 + autonFoundationPoints + autonParkingPoints + stonesPlaced*4;
+
+        //Finalize autonomous data
+        AutonomousData autonomous = new AutonomousData(skystonesDelivered,stonesDelivered,stonesPlaced,foundationMoved,parked,alliance,startSide,autonScore);
+        Map<String, Object> autonomousValues = autonomous.toMap();
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put(teamName + "/info/", infoValues); //team name is the parent node for now. Can chaneg later
+        childUpdates.put(teamName + "/Autonomous/", autonomousValues); //team name is the parent node for now. Can chaneg later
+        childUpdates.put("/scorer-name/" + scorer, infoValues);
+
+        databaseTeam.updateChildren(childUpdates);
+    }
+
+    private void addTeam() {
+        String teamNumber = GeneralTeamInfo.teamNumber.getText().toString();
+        String teamName = GeneralTeamInfo.teamName.getText().toString();
+        String event = GeneralTeamInfo.event.getText().toString();
+        String scorer = GeneralTeamInfo.scorer.getText().toString();
+
+        if (!TextUtils.isEmpty(String.valueOf(teamNumber))){
+            Team team = new Team(teamName, teamNumber, event,scorer);
+            databaseTeam.child(teamNumber).setValue(team);
+        }
     }
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
