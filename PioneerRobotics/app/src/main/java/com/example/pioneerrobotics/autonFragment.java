@@ -1,13 +1,18 @@
 package com.example.pioneerrobotics;
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+
+import android.os.CountDownTimer;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -33,23 +38,42 @@ public class autonFragment extends Fragment {
     public static int auton_skystones_val;
     public static int auton_stones_val;
     public static int auton_placing_val;
+    public static int autonomousTime;
     public TextView auton_skystones_val_text;
     public TextView auton_stones_val_text;
     public TextView auton_placing_val_text;
-    public Switch zone;
-    public Switch alliance;
-    public Switch auton_parking;
-    public Switch foundation;
-    public static String startSide;
-    public static String allianceSide;
-    public static boolean parked;
-    public static boolean foundationMoved;
+    private Chronometer autonFoundationChronometer;
+    private Button autonFoundationStart;
+    private Button autonFoundationStop;
+    private boolean foundationCountdownRunning;
+    private long foundationPauseOffset;
+    private long autonPauseOffset;
+    private Chronometer autonChronometer;
+    private Button autonStop;
+    private boolean autonChronometerRunning;
+    public static int foundationTime;
+    public Switch zone, alliance, auton_parking, foundation;
+    public static String startSide, allianceSide;
+    public static boolean parked, foundationMoved;
+    public TextView autonZoneLoadingText, blue;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
         View auton_fragment= inflater.inflate(R.layout.fragment_auton, container, false);
+
+        //Initialize timer textview
+        autonFoundationChronometer = auton_fragment.findViewById(R.id.foundationChronometer);
+        autonChronometer = auton_fragment.findViewById(R.id.autonChronometer);
+        autonChronometer.setBase(SystemClock.elapsedRealtime());
+        autonChronometer.start();
+        autonChronometerRunning = true;
+
+        //Initializing textViews
+        autonZoneLoadingText = auton_fragment.findViewById(R.id.auton_zone_text);
+        blue = auton_fragment.findViewById(R.id.blue);
 
         //Initialize buttons
         auton_skystones_add = auton_fragment.findViewById(R.id.auton_skystones_add);
@@ -61,6 +85,9 @@ public class autonFragment extends Fragment {
         auton_skystones_val_text = auton_fragment.findViewById(R.id.auton_skystones_val_text);
         auton_stones_val_text = auton_fragment.findViewById(R.id.auton_stones_val_text);
         auton_placing_val_text = auton_fragment.findViewById(R.id.auton_placing_val_text);
+        autonFoundationStart = auton_fragment.findViewById(R.id.autonFoundationStart);
+        autonFoundationStop = auton_fragment.findViewById(R.id.autonFoundationStop);
+        autonStop = auton_fragment.findViewById(R.id.autonStop);
 
         //Initialize switches
         zone = auton_fragment.findViewById(R.id.zone);
@@ -69,6 +96,26 @@ public class autonFragment extends Fragment {
         foundation = auton_fragment.findViewById(R.id.auton_foundation);
 
         //Buttons listening for clicks
+        autonStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopAutonChronometer(v);
+            }
+        });
+
+        autonFoundationStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startFoundationChronometer(v);
+            }
+        });
+
+        autonFoundationStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopFoundationChronometer(v);
+            }
+        });
 
         auton_skystones_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,8 +179,13 @@ public class autonFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                         startSide = "Loading";
+                        autonZoneLoadingText.setTextColor(Color.rgb(169, 17, 1));
+                        zone.setTextColor(Color.parseColor("#000000"));
+
                 } else {
                        startSide = "Building";
+                       zone.setTextColor(Color.rgb(169, 17, 1));
+                       autonZoneLoadingText.setTextColor(Color.parseColor("#000000"));
                 }
             }
         });
@@ -142,8 +194,11 @@ public class autonFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     allianceSide = "Blue";
+                    blue.setTextColor(Color.rgb(169, 17, 1));
+                    alliance.setTextColor(Color.parseColor("#000000"));
                 } else {
-                    allianceSide = "Red";
+                    alliance.setTextColor(Color.rgb(169, 17, 1));
+                    blue.setTextColor(Color.parseColor("#000000"));
                 }
             }
         });
@@ -170,6 +225,32 @@ public class autonFragment extends Fragment {
 
         return auton_fragment;
 
+    }
+
+    public void startFoundationChronometer(View v) {
+        if (!foundationCountdownRunning) {
+            autonFoundationChronometer.setBase(SystemClock.elapsedRealtime()-foundationPauseOffset);
+            autonFoundationChronometer.start();
+            foundationCountdownRunning = true;
+        }
+    }
+
+    public void stopFoundationChronometer(View v) {
+        if (foundationCountdownRunning){
+            autonFoundationChronometer.stop();
+            foundationPauseOffset = SystemClock.elapsedRealtime()-autonFoundationChronometer.getBase();
+            foundationCountdownRunning = false;
+            foundationTime = (int) (SystemClock.elapsedRealtime() - autonFoundationChronometer.getBase())/1000;
+            foundation.setChecked(true);
+        }
+    }
+
+    public void stopAutonChronometer(View v) {
+        if (autonChronometerRunning){
+            autonChronometer.stop();
+            autonChronometerRunning = false;
+            autonomousTime = (int) (SystemClock.elapsedRealtime() - autonChronometer.getBase())/1000;
+        }
     }
 
 

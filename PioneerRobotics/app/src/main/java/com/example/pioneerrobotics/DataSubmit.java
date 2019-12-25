@@ -28,18 +28,20 @@ public class DataSubmit {
 
 class AutonomousData {
 
-    int skystonesDelivered, stonesDelivered, stonesPlaced, autonScore;
+    int skystonesDelivered, stonesDelivered, stonesPlaced, autonScore,foundationTime, autonomousTime;
     boolean foundationMoved, parked;
     String alliance, startSide;
 
-    public AutonomousData(int skystonesDelivered, int stonesDelivered, int stonesPlaced, boolean foundationMoved, boolean parked, String alliance, String startSide, int autonScore) {
+    public AutonomousData(int skystonesDelivered, int stonesDelivered, int stonesPlaced, int foundationTime, boolean foundationMoved, boolean parked, String alliance, String startSide, int autonomousTime, int autonScore) {
         this.skystonesDelivered = skystonesDelivered;
         this.stonesDelivered = stonesDelivered;
         this.stonesPlaced = stonesPlaced;
         this.foundationMoved = foundationMoved;
+        this.foundationTime = foundationTime;
         this.parked = parked;
         this.alliance = alliance;
         this.startSide = startSide;
+        this.autonomousTime = autonomousTime;
         this.autonScore = autonScore;
     }
 
@@ -49,9 +51,11 @@ class AutonomousData {
         fields.put("Stones Delivered", stonesDelivered);
         fields.put("Total Stones Placed", stonesPlaced);
         fields.put("Foundation Moved", foundationMoved);
+        fields.put("Foundation Time", foundationTime);
         fields.put("Parked", parked);
         fields.put("Alliance", alliance);
         fields.put("Starting Side", startSide);
+        fields.put("Autonomous Time", autonomousTime);
         fields.put("Autonomous Score",autonScore);
         return fields;
     }
@@ -60,34 +64,54 @@ class AutonomousData {
 }
 
 class TeleOpData {
-    int teleOpScore, tele_height, tele_delivered, tele_placed;
+    int teleOpScore, teleHeight, teleDelivered, telePlaced;
 
     public TeleOpData(int teleOpScore, int teleHeight, int teleDelivered, int telePlaced) {
         this.teleOpScore = teleOpScore;
-        this.teleHeight = tele_height;
-        this.teleDelivered = tele_delivered;
-        this.telePlaced = tele_placed;
+        this.teleHeight = teleHeight;
+        this.teleDelivered = teleDelivered;
+        this.telePlaced = telePlaced;
     }
 
 
 
     public Map<String, Object> toMap() {
         HashMap<String, Object> fields = new HashMap<String, Object>();
-        fields.put("Stones Delivered", tele_delivered);
-        fields.put("Stones Placed", tele_placed);
-        fields.put("Skyscraper Height", tele_height);
-        fields.put("Tele-Op Score", tele_delivered);
+        fields.put("TeleOp Stones Delivered", teleDelivered);
+        fields.put("TeleOp Stones Placed", telePlaced);
+        fields.put("Skyscraper Height", teleHeight);
+        fields.put("Tele-Op Score", teleOpScore);
         return fields;
     }
 
 }
 
 class EndgameData {
-    int capstones;
-    int capstoneHeight;
-    int secondCaptsoneHeight;
-    boolean foundationMoved, parked;
-    int endgameScore;
+    int capstones, capstoneHeight, secondCapstoneHeight;
+    boolean foundationMovedOut, endParked;
+    int endScore;
+
+    public EndgameData(int capstones, int capstoneHeight, int secondCapstoneHeight, boolean foundationMovedOut, boolean endParked, int endScore) {
+        this.capstones = capstones;
+        this.capstoneHeight = capstoneHeight;
+        this.secondCapstoneHeight = secondCapstoneHeight;
+        this.foundationMovedOut = foundationMovedOut;
+        this.endParked = endParked;
+        this.endScore = endScore;
+    }
+
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> fields = new HashMap<String, Object>();
+        fields.put("Capstones Placed", capstones);
+        fields.put("First Capstone Height", capstoneHeight);
+        fields.put("Second Capstone Height", secondCapstoneHeight);
+        fields.put("Foundation Moved Out", foundationMovedOut);
+        fields.put("Parked Endgame", endParked);
+        fields.put("Endgame Score", endScore);
+        return fields;
+    }
+
+
 }
 
 class TeamData {

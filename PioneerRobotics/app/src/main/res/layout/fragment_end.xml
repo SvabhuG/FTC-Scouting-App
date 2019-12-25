@@ -94,30 +94,32 @@
         android:ems="5"
         android:textSize="16sp"
         android:inputType="textPersonName"
-        android:text="Height"
+        android:text="0"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
     <Switch
-        android:id="@+id/auton_foundation"
+        android:id="@+id/end_foundation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="296dp"
         android:switchPadding="12dp"
         android:text="Foundation Moved"
         android:textSize="24sp"
+        android:theme="@style/SCBSwitch"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
     <Switch
-        android:id="@+id/foundation2"
+        android:id="@+id/endParking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="364dp"
         android:switchPadding="12dp"
         android:text="Parking"
+        android:theme="@style/SCBSwitch"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
@@ -130,7 +132,7 @@
         android:layout_marginTop="228dp"
         android:ems="5"
         android:inputType="textPersonName"
-        android:text="Height"
+        android:text="0"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />

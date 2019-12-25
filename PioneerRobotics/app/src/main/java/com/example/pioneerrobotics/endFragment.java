@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -43,7 +45,13 @@ public class endFragment extends Fragment {
     Button end_capstone_minus;
     Button submit_data;
     TextView end_capstone_val_text;
+    EditText firstCapHeight;
+    EditText secondCapHeight;
+    Switch endFoundation;
+    Switch endParking;
     public int end_capstone_val;
+    public boolean foundationMovedOut;
+    public boolean endParked;
     DatabaseReference databaseTeam;
 
 
@@ -57,6 +65,11 @@ public class endFragment extends Fragment {
         end_capstone_add = end_fragment.findViewById(R.id.end_capstone_add);
         end_capstone_minus = end_fragment.findViewById(R.id.end_capstone_minus);
         end_capstone_val_text = end_fragment.findViewById(R.id.end_capstones_val_text);
+        firstCapHeight = end_fragment.findViewById(R.id.end_capstone1_height_editText);
+        secondCapHeight = end_fragment.findViewById(R.id.end_capstone2_height_editText);
+        endFoundation = end_fragment.findViewById((R.id.end_foundation));
+        endParking = end_fragment.findViewById(R.id.endParking);
+
         submit_data = end_fragment.findViewById(R.id.submit_data);
 
         submit_data.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +100,25 @@ public class endFragment extends Fragment {
             }
         });
 
+        endFoundation.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    foundationMovedOut = true;
+                } else {
+                    foundationMovedOut = false;
+                }
+            }
+        });
+        endParking.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    endParked = true;
+                } else {
+                    endParked = false;
+                }
+            }
+        });
+
 
         return end_fragment;
     }
@@ -98,6 +130,7 @@ public class endFragment extends Fragment {
         String teamName = GeneralTeamInfo.teamName.getText().toString();
         String event = GeneralTeamInfo.event.getText().toString();
         String scorer = GeneralTeamInfo.scorer.getText().toString();
+        int round = Integer.parseInt(GeneralTeamInfo.roundEditText.getText().toString());
 
         //Finalize info data
         DataSubmit info = new DataSubmit(teamName, teamNumber, event, scorer);
@@ -109,23 +142,53 @@ public class endFragment extends Fragment {
         int stonesDelivered = autonFragment.auton_stones_val;
         int stonesPlaced = autonFragment.auton_placing_val;
         boolean foundationMoved = autonFragment.foundationMoved;
+        int foundationTime = autonFragment.foundationTime;
         boolean parked = autonFragment.parked;
         String alliance = autonFragment.allianceSide;
         String startSide = autonFragment.startSide;
+        int autonomousTime = autonFragment.autonomousTime;
 
-        //Calculating autonomous score
-        int autonFoundationPoints = ((foundationMoved == true) ? 10:0);
+        //Calculate autonomous score
+        int autonFoundationPoints = ((foundationMoved) ? 10:0);
         int autonParkingPoints = ((parked == true) ? 5:0);
         int autonScore = skystonesDelivered*10 + stonesDelivered*2 + autonFoundationPoints + autonParkingPoints + stonesPlaced*4;
 
-        //Finalize autonomous data
-        AutonomousData autonomous = new AutonomousData(skystonesDelivered,stonesDelivered,stonesPlaced,foundationMoved,parked,alliance,startSide,autonScore);
+        //Create a hashmap for autonomous values
+        AutonomousData autonomous = new AutonomousData(skystonesDelivered,stonesDelivered,stonesPlaced,foundationTime, foundationMoved,parked,alliance,startSide,autonomousTime, autonScore);
         Map<String, Object> autonomousValues = autonomous.toMap();
 
+        //Tele Op data
+        int teleStonesDelivered = teleFragment.tele_delivered_val;
+        int teleStonesPlaced = teleFragment.tele_placed_val;
+        int teleHeight = Integer.parseInt(teleFragment.tele_height_editText.getText().toString());
+
+        //Calculate tele op score
+        int teleOpScore = teleStonesDelivered + teleStonesPlaced + teleHeight;
+
+        //Create a hashmap for tele op values
+        TeleOpData teleOp = new TeleOpData(teleOpScore,teleHeight,teleStonesDelivered,teleStonesPlaced);
+        Map<String, Object> teleOpValues = teleOp.toMap();
+
+        //Endgame data
+        int capstones = end_capstone_val;
+        int capstoneHeight = Integer.parseInt(firstCapHeight.getText().toString());
+        int secondCapstoneHeight = Integer.parseInt(secondCapHeight.getText().toString());
+
+        //Calculate endgame score
+        int foundationMovedOutPoints = ((foundationMovedOut) ? 15:0);
+        int endParkingPoints = ((endParked) ? 5:0);
+        int endScore = capstones*5 + capstoneHeight + secondCapstoneHeight + foundationMovedOutPoints + endParkingPoints;
+
+        //Create a hashmap for endgame values
+        EndgameData endgame = new EndgameData(capstones,capstoneHeight,secondCapstoneHeight, foundationMovedOut, endParked,endScore);
+        Map<String, Object> endgameValues = endgame.toMap();
+
         Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put(teamName + "/info/", infoValues); //team name is the parent node for now. Can chaneg later
-        childUpdates.put(teamName + "/Autonomous/", autonomousValues); //team name is the parent node for now. Can chaneg later
-        childUpdates.put("/scorer-name/" + scorer, infoValues);
+        childUpdates.put(teamName + "/" + ("Round " + round) + "/Info/", infoValues);
+        childUpdates.put(teamName + "/" + ("Round " + round) + "/Autonomous/", autonomousValues);
+        childUpdates.put(teamName + "/" + ("Round " + round) + "/Tele Op/", teleOpValues);
+        childUpdates.put(teamName + "/" + ("Round " + round) + "/Endgame/", endgameValues);
+
 
         databaseTeam.updateChildren(childUpdates);
     }

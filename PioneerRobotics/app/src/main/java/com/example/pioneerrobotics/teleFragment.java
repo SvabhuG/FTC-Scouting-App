@@ -25,12 +25,12 @@ public class teleFragment extends Fragment {
     public Button tele_delivered_minus;
     public Button tele_placed_add;
     public Button tele_placed_minus;
-    public EditText tele_height_editText;
+    public static EditText tele_height_editText;
     public TextView tele_delivered_val_text;
     public TextView tele_placed_val_text;
-    public int tele_delivered_val;
-    public int tele_placed_val;
-    public int tele_height;
+    public static int tele_delivered_val;
+    public static int tele_placed_val;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,6 +43,7 @@ public class teleFragment extends Fragment {
         tele_placed_minus = tele_fragment.findViewById(R.id.tele_placed_minus);
         tele_delivered_val_text = tele_fragment.findViewById(R.id.tele_delivered_val_text);
         tele_placed_val_text = tele_fragment.findViewById(R.id.tele_placed_val_text);
+        tele_height_editText = (EditText) tele_fragment.findViewById(R.id.tele_height_editText);
 
 
 

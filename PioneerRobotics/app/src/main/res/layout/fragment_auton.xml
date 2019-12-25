@@ -23,7 +23,7 @@
         android:id="@+id/auton_stones_minus"
         android:layout_width="85dp"
         android:layout_height="40dp"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="172dp"
         android:text="-"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
@@ -32,7 +32,7 @@
         android:id="@+id/auton_placing_minus"
         android:layout_width="85dp"
         android:layout_height="40dp"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="236dp"
         android:text="-"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
@@ -43,7 +43,9 @@
         android:layout_height="wrap_content"
         android:switchPadding="12dp"
         android:text="@string/building"
+        android:textColor="#A91101"
         android:textSize="24sp"
+        android:theme="@style/SCBSwitch"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintHorizontal_bias="0.283"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
@@ -53,10 +55,11 @@
         android:id="@+id/auton_parking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="432dp"
+        android:layout_marginTop="412dp"
         android:switchPadding="12dp"
         android:text="Parking"
         android:textSize="24sp"
+        android:theme="@style/SCBSwitch"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
@@ -65,11 +68,13 @@
         android:id="@+id/auton_foundation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="368dp"
+        android:layout_marginTop="296dp"
         android:switchPadding="12dp"
         android:text="Foundation Moved"
         android:textSize="24sp"
+        android:theme="@style/SCBSwitch"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.534"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
@@ -80,7 +85,9 @@
         android:layout_marginTop="48dp"
         android:switchPadding="12dp"
         android:text="Red"
+        android:textColor="#A91101"
         android:textSize="24sp"
+        android:theme="@style/SCBSwitch"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
@@ -100,7 +107,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
     <TextView
-        android:id="@+id/tele_delivered_text"
+        android:id="@+id/auton_zone_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/loading"
@@ -146,7 +153,7 @@
         android:id="@+id/auton_stones_add"
         android:layout_width="84dp"
         android:layout_height="43dp"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="172dp"
         android:layout_marginEnd="84dp"
         android:text="+"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
@@ -156,9 +163,59 @@
         android:id="@+id/auton_placing_add"
         android:layout_width="85dp"
         android:layout_height="40dp"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="236dp"
         android:layout_marginEnd="84dp"
         android:text="+"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintTop_toTopOf="@+id/guideline_top" />
+
+    <Button
+        android:id="@+id/autonFoundationStart"
+        android:layout_width="85dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="348dp"
+        android:layout_marginEnd="252dp"
+        android:text="Start"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintTop_toTopOf="@+id/guideline_top" />
+
+    <Button
+        android:id="@+id/autonFoundationStop"
+        android:layout_width="85dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="348dp"
+        android:layout_marginEnd="172dp"
+        android:text="Stop"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintTop_toTopOf="@+id/guideline_top" />
+
+    <Button
+        android:id="@+id/autonStop"
+        android:layout_width="85dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="496dp"
+        android:layout_marginEnd="80dp"
+        android:text="Stop"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintTop_toTopOf="@+id/guideline_top" />
+
+    <Chronometer
+        android:id="@+id/foundationChronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="348dp"
+        android:layout_marginEnd="68dp"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintTop_toTopOf="@+id/guideline_top" />
+
+    <Chronometer
+        android:id="@+id/autonChronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="504dp"
+        android:layout_marginEnd="216dp"
+        android:textSize="24dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
@@ -179,12 +236,11 @@
         android:id="@+id/auton_stones_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="172dp"
         android:text="Stones"
         android:textColor="#000000"
         android:textSize="24sp"
 
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
@@ -192,11 +248,23 @@
         android:id="@+id/auton_placing_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="376dp"
+        android:layout_marginTop="356dp"
         android:text="Placing"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/auton_placing_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="580dp"
+        android:text="Autonomous Time :"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -216,7 +284,7 @@
         android:layout_width="18dp"
         android:layout_height="37dp"
         android:layout_marginStart="144dp"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="172dp"
         android:text="0"
         android:textColor="#000000"
         android:textSize="24dp"
@@ -228,7 +296,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="144dp"
-        android:layout_marginTop="256dp"
+        android:layout_marginTop="236dp"
         android:text="0"
         android:textColor="#000000"
         android:textSize="24dp"
