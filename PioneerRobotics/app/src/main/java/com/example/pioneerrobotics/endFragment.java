@@ -1,9 +1,12 @@
 package com.example.pioneerrobotics;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.nfc.Tag;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
@@ -52,6 +55,7 @@ public class endFragment extends Fragment {
     public int end_capstone_val;
     public boolean foundationMovedOut;
     public boolean endParked;
+    public static int autonScore, teleOpScore, endScore, totalScore;
     DatabaseReference databaseTeam;
 
 
@@ -61,7 +65,7 @@ public class endFragment extends Fragment {
                              Bundle savedInstanceState) {
         databaseTeam = FirebaseDatabase.getInstance().getReference("teams");
         // Inflate the layout for this fragment
-        View end_fragment= inflater.inflate(R.layout.fragment_end, container, false);
+        final View end_fragment= inflater.inflate(R.layout.fragment_end, container, false);
         end_capstone_add = end_fragment.findViewById(R.id.end_capstone_add);
         end_capstone_minus = end_fragment.findViewById(R.id.end_capstone_minus);
         end_capstone_val_text = end_fragment.findViewById(R.id.end_capstones_val_text);
@@ -77,6 +81,7 @@ public class endFragment extends Fragment {
             public void onClick(View v) {
                 //addTeam();
                 writeNewPost();
+                openPostActivity();
             }
         });
 
@@ -122,6 +127,11 @@ public class endFragment extends Fragment {
 
         return end_fragment;
     }
+    private void openPostActivity(){
+        Intent myIntent = new Intent(getActivity(), PostMatchActivity.class);
+        startActivity(myIntent);
+    }
+
 
     private void writeNewPost() {
 
@@ -151,7 +161,7 @@ public class endFragment extends Fragment {
         //Calculate autonomous score
         int autonFoundationPoints = ((foundationMoved) ? 10:0);
         int autonParkingPoints = ((parked == true) ? 5:0);
-        int autonScore = skystonesDelivered*10 + stonesDelivered*2 + autonFoundationPoints + autonParkingPoints + stonesPlaced*4;
+        autonScore = skystonesDelivered*10 + stonesDelivered*2 + autonFoundationPoints + autonParkingPoints + stonesPlaced*4;
 
         //Create a hashmap for autonomous values
         AutonomousData autonomous = new AutonomousData(skystonesDelivered,stonesDelivered,stonesPlaced,foundationTime, foundationMoved,parked,alliance,startSide,autonomousTime, autonScore);
@@ -163,7 +173,7 @@ public class endFragment extends Fragment {
         int teleHeight = Integer.parseInt(teleFragment.tele_height_editText.getText().toString());
 
         //Calculate tele op score
-        int teleOpScore = teleStonesDelivered + teleStonesPlaced + teleHeight;
+        teleOpScore = teleStonesDelivered + teleStonesPlaced + teleHeight;
 
         //Create a hashmap for tele op values
         TeleOpData teleOp = new TeleOpData(teleOpScore,teleHeight,teleStonesDelivered,teleStonesPlaced);
@@ -177,10 +187,10 @@ public class endFragment extends Fragment {
         //Calculate endgame score
         int foundationMovedOutPoints = ((foundationMovedOut) ? 15:0);
         int endParkingPoints = ((endParked) ? 5:0);
-        int endScore = capstones*5 + capstoneHeight + secondCapstoneHeight + foundationMovedOutPoints + endParkingPoints;
+        endScore = capstones*5 + capstoneHeight + secondCapstoneHeight + foundationMovedOutPoints + endParkingPoints;
 
         //Create a hashmap for endgame values
-        EndgameData endgame = new EndgameData(capstones,capstoneHeight,secondCapstoneHeight, foundationMovedOut, endParked,endScore);
+        EndgameData endgame = new EndgameData(capstones,capstoneHeight,secondCapstoneHeight, foundationMovedOut, endParked,endScore, totalScore);
         Map<String, Object> endgameValues = endgame.toMap();
 
         Map<String, Object> childUpdates = new HashMap<>();

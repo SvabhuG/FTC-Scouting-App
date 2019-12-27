@@ -87,17 +87,18 @@ class TeleOpData {
 }
 
 class EndgameData {
-    int capstones, capstoneHeight, secondCapstoneHeight;
+    int capstones, capstoneHeight, secondCapstoneHeight, totalScore;
     boolean foundationMovedOut, endParked;
     int endScore;
 
-    public EndgameData(int capstones, int capstoneHeight, int secondCapstoneHeight, boolean foundationMovedOut, boolean endParked, int endScore) {
+    public EndgameData(int capstones, int capstoneHeight, int secondCapstoneHeight, boolean foundationMovedOut, boolean endParked, int endScore, int totalScore) {
         this.capstones = capstones;
         this.capstoneHeight = capstoneHeight;
         this.secondCapstoneHeight = secondCapstoneHeight;
         this.foundationMovedOut = foundationMovedOut;
         this.endParked = endParked;
         this.endScore = endScore;
+        this.totalScore = totalScore;
     }
 
     public Map<String, Object> toMap() {
@@ -108,6 +109,7 @@ class EndgameData {
         fields.put("Foundation Moved Out", foundationMovedOut);
         fields.put("Parked Endgame", endParked);
         fields.put("Endgame Score", endScore);
+        fields.put("Total Score", totalScore);
         return fields;
     }
 
