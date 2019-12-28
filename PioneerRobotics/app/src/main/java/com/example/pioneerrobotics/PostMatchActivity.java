@@ -42,9 +42,6 @@ public class PostMatchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 restartApp();
-                autonFragment.auton_skystones_val = 0;
-                autonFragment.auton_stones_val = 0;
-                autonFragment.auton_placing_val = 0;
 
             }
         });
@@ -54,6 +51,15 @@ public class PostMatchActivity extends AppCompatActivity {
     private void restartApp() {
         Intent intent = new Intent(this, GeneralTeamInfo.class);
         startActivity(intent);
+        autonFragment.auton_skystones_val = 0;
+        autonFragment.auton_stones_val = 0;
+        autonFragment.auton_placing_val = 0;
+        teleFragment.tele_delivered_val = 0;
+        teleFragment.tele_placed_val = 0;
+        teleFragment.tele_height_editText.setText("0");
+        endFragment.end_capstone_val = 0;
+        endFragment.firstCapHeight.setText("0");
+        endFragment.secondCapHeight.setText("0");
     }
 
 

@@ -1,14 +1,20 @@
 package com.example.pioneerrobotics;
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.zip.Inflater;
 
 
@@ -20,7 +26,7 @@ import java.util.zip.Inflater;
  * Use the {@link teleFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class teleFragment extends Fragment {
+public class teleFragment extends Fragment{
     public Button tele_delivered_add;
     public Button tele_delivered_minus;
     public Button tele_placed_add;
@@ -30,13 +36,14 @@ public class teleFragment extends Fragment {
     public TextView tele_placed_val_text;
     public static int tele_delivered_val;
     public static int tele_placed_val;
+    public static String autonTelePlaced = Integer.toString(autonFragment.auton_placing_val + tele_placed_val);
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View tele_fragment= inflater.inflate(R.layout.fragment_tele, container, false);
+        final View tele_fragment= inflater.inflate(R.layout.fragment_tele, container, false);
         tele_delivered_add = tele_fragment.findViewById(R.id.tele_delivered_add);
         tele_delivered_minus = tele_fragment.findViewById(R.id.tele_delivered_minus);
         tele_placed_add = tele_fragment.findViewById(R.id.tele_placed_add);
@@ -44,6 +51,7 @@ public class teleFragment extends Fragment {
         tele_delivered_val_text = tele_fragment.findViewById(R.id.tele_delivered_val_text);
         tele_placed_val_text = tele_fragment.findViewById(R.id.tele_placed_val_text);
         tele_height_editText = (EditText) tele_fragment.findViewById(R.id.tele_height_editText);
+
 
 
 
@@ -85,7 +93,28 @@ public class teleFragment extends Fragment {
             }
         });
 
+        tele_height_editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (Integer.parseInt(tele_height_editText.getText().toString()) > (autonFragment.auton_placing_val + tele_placed_val)){
+                    CharSequence text = "Skyscraper Height is greater than number of stones placed";
+                    int duration = Toast.LENGTH_SHORT;
+                    Context context = getActivity().getApplicationContext();
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         return tele_fragment;
 

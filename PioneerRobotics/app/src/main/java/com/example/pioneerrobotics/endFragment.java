@@ -44,18 +44,12 @@ import com.google.firebase.database.ValueEventListener;
 public class endFragment extends Fragment {
     private static final String TAG = "endFragment";
 
-    Button end_capstone_add;
-    Button end_capstone_minus;
-    Button submit_data;
+    Button end_capstone_add, end_capstone_minus, submit_data;
     TextView end_capstone_val_text;
-    EditText firstCapHeight;
-    EditText secondCapHeight;
-    Switch endFoundation;
-    Switch endParking;
-    public int end_capstone_val;
-    public boolean foundationMovedOut;
-    public boolean endParked;
-    public static int autonScore, teleOpScore, endScore, totalScore;
+    public static EditText firstCapHeight, secondCapHeight;
+    Switch endFoundation, endParking;
+    public static boolean foundationMovedOut, endParked;
+    public static int autonScore, teleOpScore, endScore, totalScore, end_capstone_val;
     DatabaseReference databaseTeam;
 
 

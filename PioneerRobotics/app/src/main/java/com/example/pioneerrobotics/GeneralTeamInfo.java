@@ -8,23 +8,20 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.List;
-import android.app.Activity;
-import android.widget.AdapterView;
+
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.material.tabs.TabLayout;
 
 
 public class GeneralTeamInfo extends AppCompatActivity {
 
-    Toolbar toolbar,toolbartab;
+    Toolbar toolbar;
     Button submit_info;
     public static EditText teamName, teamNumber, event, scorer, roundEditText;
     private Spinner intakeSpinner;
