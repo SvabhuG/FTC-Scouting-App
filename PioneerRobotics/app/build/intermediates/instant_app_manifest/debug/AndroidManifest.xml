@@ -27,13 +27,16 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.example.pioneerrobotics.GeneralTeamInfo" >
+        <activity android:name="com.example.pioneerrobotics.SignInActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.pioneerrobotics.AddEventListActivity" />
+        <activity android:name="com.example.pioneerrobotics.SignUpActivity" />
+        <activity android:name="com.example.pioneerrobotics.GeneralTeamInfo" />
         <activity android:name="com.example.pioneerrobotics.MainActivity" />
         <activity android:name="com.example.pioneerrobotics.PostMatchActivity" />
 

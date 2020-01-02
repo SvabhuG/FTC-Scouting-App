@@ -116,10 +116,38 @@ class EndgameData {
 
 }
 
-class TeamData {
-    String name;
-    int teamNum;
-    String eventName;
-    String scorerName;
+class eventData {
 
+    public eventData(){}
+
+    public eventData(String teamName, String teamNumber) {
+        this.teamName = teamName;
+        this.teamNumber = teamNumber;
+    }
+
+    public String getTeamName() {
+        return this.teamName;
+    }
+
+    public void setTeamName(String teamName ) {
+        this.teamName = teamName;
+    }
+
+    public String getTeamNumber() {
+        return this.teamNumber;
+    }
+
+    public void setTeamNumber(String teamNumber) {
+        this.teamNumber = teamNumber;
+    }
+
+    public String teamName, teamNumber;
+
+
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> fields = new HashMap<String, Object>();
+        fields.put("TeamName", teamName);
+        fields.put("TeamNumber", teamNumber);
+        return fields;
+    }
 }

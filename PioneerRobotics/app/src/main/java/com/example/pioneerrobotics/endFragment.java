@@ -1,16 +1,11 @@
 package com.example.pioneerrobotics;
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,19 +15,12 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-
-import com.google.firebase.database.DataSnapshot;
-
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.DatabaseReference;
 
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.Map;
 import java.util.HashMap;
-import com.google.firebase.database.ValueEventListener;
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -50,14 +38,15 @@ public class endFragment extends Fragment {
     Switch endFoundation, endParking;
     public static boolean foundationMovedOut, endParked;
     public static int autonScore, teleOpScore, endScore, totalScore, end_capstone_val;
-    DatabaseReference databaseTeam;
+    DatabaseReference database;
 
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        databaseTeam = FirebaseDatabase.getInstance().getReference("teams");
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        database = FirebaseDatabase.getInstance().getReference("data");
         // Inflate the layout for this fragment
         final View end_fragment= inflater.inflate(R.layout.fragment_end, container, false);
         end_capstone_add = end_fragment.findViewById(R.id.end_capstone_add);
@@ -130,9 +119,9 @@ public class endFragment extends Fragment {
     private void writeNewPost() {
 
         // General team info
-        int teamNumber = Integer.parseInt(GeneralTeamInfo.teamNumber.getText().toString());
-        String teamName = GeneralTeamInfo.teamName.getText().toString();
-        String event = GeneralTeamInfo.event.getText().toString();
+        int teamNumber = Integer.parseInt(GeneralTeamInfo.teamNumberEditText.getText().toString());
+        String teamName = GeneralTeamInfo.teamNameEditText.getText().toString();
+        String event = GeneralTeamInfo.eventEditText.getText().toString();
         String scorer = GeneralTeamInfo.scorer.getText().toString();
         int round = Integer.parseInt(GeneralTeamInfo.roundEditText.getText().toString());
 
@@ -194,18 +183,18 @@ public class endFragment extends Fragment {
         childUpdates.put(teamName + "/" + ("Round " + round) + "/Endgame/", endgameValues);
 
 
-        databaseTeam.updateChildren(childUpdates);
+        database.updateChildren(childUpdates);
     }
 
     private void addTeam() {
-        String teamNumber = GeneralTeamInfo.teamNumber.getText().toString();
-        String teamName = GeneralTeamInfo.teamName.getText().toString();
-        String event = GeneralTeamInfo.event.getText().toString();
+        String teamNumber = GeneralTeamInfo.teamNumberEditText.getText().toString();
+        String teamName = GeneralTeamInfo.teamNameEditText.getText().toString();
+        String event = GeneralTeamInfo.eventEditText.getText().toString();
         String scorer = GeneralTeamInfo.scorer.getText().toString();
 
         if (!TextUtils.isEmpty(String.valueOf(teamNumber))){
             Team team = new Team(teamName, teamNumber, event,scorer);
-            databaseTeam.child(teamNumber).setValue(team);
+            database.child(teamNumber).setValue(team);
         }
     }
     // TODO: Rename parameter arguments, choose names that match
