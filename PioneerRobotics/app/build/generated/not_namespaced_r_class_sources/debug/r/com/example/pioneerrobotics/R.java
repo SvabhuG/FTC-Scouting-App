@@ -5323,7 +5323,7 @@ public final class R {
     public static final int end_padder=0x7f08006a;
     public static final int enterAlways=0x7f08006b;
     public static final int enterAlwaysCollapsed=0x7f08006c;
-    public static final int event=0x7f08006d;
+    public static final int eventEditText=0x7f08006d;
     public static final int eventText=0x7f08006e;
     public static final int exitUntilCollapsed=0x7f08006f;
     public static final int expand_activities_button=0x7f080070;

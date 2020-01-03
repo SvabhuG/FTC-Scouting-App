@@ -51,7 +51,7 @@ public class AddEventListActivity extends AppCompatActivity {
 
     private void writePost(){
 
-        eventData vals = new eventData(teamNameText.getText().toString(),teamNumberText.getText().toString());
+        eventData vals = new eventData(teamNameText.getText().toString(),teamNumberText.getText().toString(), eventText.getText().toString());
         Map<String, Object> eventValues = vals.toMap();
 
         Map<String, Object> eventChildUpdates = new HashMap<>();

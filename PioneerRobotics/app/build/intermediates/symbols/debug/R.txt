@@ -1176,7 +1176,7 @@ int id end_foundation 0x7f080069
 int id end_padder 0x7f08006a
 int id enterAlways 0x7f08006b
 int id enterAlwaysCollapsed 0x7f08006c
-int id event 0x7f08006d
+int id eventEditText 0x7f08006d
 int id eventText 0x7f08006e
 int id exitUntilCollapsed 0x7f08006f
 int id expand_activities_button 0x7f080070

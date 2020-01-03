@@ -120,9 +120,10 @@ class eventData {
 
     public eventData(){}
 
-    public eventData(String teamName, String teamNumber) {
+    public eventData(String teamName, String teamNumber, String event) {
         this.teamName = teamName;
         this.teamNumber = teamNumber;
+        this.event = event;
     }
 
     public String getTeamName() {
@@ -141,13 +142,21 @@ class eventData {
         this.teamNumber = teamNumber;
     }
 
-    public String teamName, teamNumber;
+    public String teamName;
+    public String teamNumber;
+
+    public String getEvent() {
+        return event;
+    }
+
+    public String event;
 
 
     public Map<String, Object> toMap() {
         HashMap<String, Object> fields = new HashMap<String, Object>();
-        fields.put("TeamName", teamName);
-        fields.put("TeamNumber", teamNumber);
+        fields.put("Team Name", teamName);
+        fields.put("Team Number", teamNumber);
+        fields.put("Event", event);
         return fields;
     }
 }

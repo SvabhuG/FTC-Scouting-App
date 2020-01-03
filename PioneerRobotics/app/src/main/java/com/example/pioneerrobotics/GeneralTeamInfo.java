@@ -3,7 +3,9 @@ package com.example.pioneerrobotics;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -35,10 +37,15 @@ public class GeneralTeamInfo extends AppCompatActivity {
 
     Toolbar toolbar;
     Button submit_info, add_event_info;
-    public static EditText teamNameEditText, teamNumberEditText, eventEditText, scorer, roundEditText;
+    public static EditText scorer, roundEditText;
+    public static AutoCompleteTextView teamNameEditText, teamNumberEditText, eventEditText;
     private Spinner intakeSpinner;
     private DatabaseReference mDatabase;
-    ArrayList eventsOccurred = new ArrayList<>();
+    public ArrayList<eventData> eventsOccurred = new ArrayList<>();
+    List<String> eventNames = new ArrayList<>();
+    List<String> teamNames = new ArrayList<>();
+    List<String> teamNumbers = new ArrayList<>();
+    int count;
 
 
 
@@ -52,9 +59,9 @@ public class GeneralTeamInfo extends AppCompatActivity {
 
         toolbar = (Toolbar)findViewById((R.id.toolbar));
         submit_info = (Button)findViewById(R.id.submit_info);
-        teamNameEditText = (EditText)findViewById(R.id.team_name);
-        teamNumberEditText = (EditText)findViewById(R.id.team_number);
-        eventEditText = (EditText)findViewById(R.id.event);
+        teamNameEditText = findViewById(R.id.team_name);
+        teamNumberEditText = findViewById(R.id.team_number);
+        eventEditText = findViewById(R.id.eventEditText);
         scorer = (EditText)findViewById(R.id.scorer);
         roundEditText = (EditText)findViewById(R.id.roundEditText);
         intakeSpinner = (Spinner)findViewById(R.id.intakeSpinner);
@@ -64,11 +71,59 @@ public class GeneralTeamInfo extends AppCompatActivity {
         readFromDatabase();
 
 
-        List<String> mechs = new ArrayList<String>();
+        List<String> mechs = new ArrayList<>();
         mechs.add("Forklift");
         mechs.add("Intake Wheels");
         mechs.add("Grabbing Arm");
         mechs.add("Other");
+
+
+        ArrayAdapter<String> eventAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1,eventNames);
+
+
+
+
+
+        eventEditText.setAdapter(eventAdapter);
+
+
+
+
+
+        teamNameEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    if (count == 0){
+                        if (!eventEditText.getText().toString().isEmpty()){
+                            for (eventData obj: eventsOccurred) {
+                                if (eventEditText.getText().toString().equals(obj.getEvent())){
+                                    teamNames.add(obj.getTeamName());
+                                    teamNumbers.add(obj.getTeamNumber());
+                                }
+                                Log.i("teamName", obj.getTeamName());
+                            }
+
+                            ArrayAdapter<String> teamNamesAdapter = new ArrayAdapter<String>(v.getContext(),
+                                    android.R.layout.simple_list_item_1,teamNames);
+
+                            teamNameEditText.setAdapter(teamNamesAdapter);
+
+//                            ArrayAdapter<String> teamNumbersAdapter = new ArrayAdapter<String>(v.getContext(),
+//                                    android.R.layout.simple_list_item_1,teamNumbers);
+//
+//                            teamNumberEditText.setAdapter(teamNumbersAdapter);
+                        }
+                        count = 1;
+                    }
+                } else{
+                    if (!teamNameEditText.getText().toString().isEmpty()){
+                        teamNumberEditText.setText(teamNumbers.get(teamNames.indexOf(teamNameEditText.getText().toString())));
+                    }
+                }
+            }
+        });
 
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
@@ -135,11 +190,14 @@ public class GeneralTeamInfo extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot eventSnapshot : dataSnapshot.getChildren()) {
                     for (DataSnapshot teamSnapshot : eventSnapshot.getChildren()) {
-                        String teamName = teamSnapshot.child("TeamName").getValue(String.class);
-                        String teamNum = teamSnapshot.child("TeamNumber").getValue(String.class);
-                        eventData eventData = new eventData(teamName,teamNum);
-                        Log.i("MyApp","Team Name is " + eventData.getTeamName());
+                        String teamName = teamSnapshot.child("Team Name").getValue(String.class);
+                        String teamNum = teamSnapshot.child("Team Number").getValue(String.class);
+                        String event = teamSnapshot.child("Event").getValue(String.class);
+                        eventData eventData = new eventData(teamName,teamNum, event);
+                        eventsOccurred.add(eventData);
                     }
+                    String[] str = eventSnapshot.getRef().toString().split("/");
+                    eventNames.add(str[str.length-1].replace("%20"," "));
                 }
 
             }
@@ -153,3 +211,5 @@ public class GeneralTeamInfo extends AppCompatActivity {
     }
 
 }
+
+

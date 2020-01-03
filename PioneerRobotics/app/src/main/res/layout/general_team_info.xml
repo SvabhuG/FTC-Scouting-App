@@ -62,7 +62,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="100dp"
         android:text="Team Name :"
         android:textColor="#000000"
         android:textSize="20dp"
@@ -73,7 +73,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="184dp"
         android:text="Team Number :"
         android:textColor="#000000"
         android:textSize="20dp"
@@ -84,8 +84,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="20dp"
         android:text="Event :"
         android:textColor="#000000"
         android:textSize="20dp"
@@ -125,11 +124,11 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/team_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="171dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="92dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text=""
@@ -137,11 +136,11 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/team_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="176dp"
         android:ems="10"
         android:inputType="text"
         android:text=""
@@ -149,14 +148,14 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
-    <EditText
-        android:id="@+id/event"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="176dp"
+    <AutoCompleteTextView
+        android:id="@+id/eventEditText"
+        android:layout_width="166dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
+        android:hint="Select an event"
         android:inputType="textPersonName"
-        android:text=""
         android:textSize="14dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
