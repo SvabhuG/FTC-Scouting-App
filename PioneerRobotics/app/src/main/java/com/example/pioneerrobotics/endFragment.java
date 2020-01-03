@@ -45,7 +45,7 @@ public class endFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+//        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         database = FirebaseDatabase.getInstance().getReference("data");
         // Inflate the layout for this fragment
         final View end_fragment= inflater.inflate(R.layout.fragment_end, container, false);

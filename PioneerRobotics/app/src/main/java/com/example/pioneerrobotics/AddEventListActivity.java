@@ -55,7 +55,7 @@ public class AddEventListActivity extends AppCompatActivity {
         Map<String, Object> eventValues = vals.toMap();
 
         Map<String, Object> eventChildUpdates = new HashMap<>();
-        events.child(eventText.getText().toString()).setValue(eventValues);
+        events.child("events").child(eventText.getText().toString()).child(teamNameText.getText().toString()).setValue(eventValues);
         events.updateChildren(eventChildUpdates);
     }
 

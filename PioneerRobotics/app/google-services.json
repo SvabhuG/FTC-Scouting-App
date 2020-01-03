@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "169451964996-v4okn4juuob1lmhsqkcmh5405ql9m154.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pioneerrobotics",
+            "certificate_hash": "aea783fb25bccc837e1c400323661ed8fb6d2458"
+          }
+        },
+        {
           "client_id": "169451964996-5g6l5frta8bboterksmj6cc7g48jn9f4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -38,6 +46,13 @@
             {
               "client_id": "169451964996-66c4172inc48i6j61eb2rqq1snchl6k1.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "169451964996-kmm4qshctom1mobhv88glq4utfs22kk8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "Pioneer-Robotics.SkystoneScoringApp"
+              }
             }
           ]
         }

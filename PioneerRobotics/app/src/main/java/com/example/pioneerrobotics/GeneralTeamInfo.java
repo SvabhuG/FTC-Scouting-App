@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -47,6 +48,8 @@ public class GeneralTeamInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.general_team_info);
 
+
+
         toolbar = (Toolbar)findViewById((R.id.toolbar));
         submit_info = (Button)findViewById(R.id.submit_info);
         teamNameEditText = (EditText)findViewById(R.id.team_name);
@@ -58,13 +61,15 @@ public class GeneralTeamInfo extends AppCompatActivity {
         add_event_info = (Button)findViewById(R.id.add_event_page_button);
         mDatabase = FirebaseDatabase.getInstance().getReference("events");
 
+        readFromDatabase();
+
 
         List<String> mechs = new ArrayList<String>();
         mechs.add("Forklift");
         mechs.add("Intake Wheels");
         mechs.add("Grabbing Arm");
         mechs.add("Other");
-        readFromDatabase();
+
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item,mechs);
@@ -113,6 +118,7 @@ public class GeneralTeamInfo extends AppCompatActivity {
         });
 
     }
+
     public void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -126,12 +132,16 @@ public class GeneralTeamInfo extends AppCompatActivity {
     public void readFromDatabase(){
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot eventSnapshot : dataSnapshot.getChildren()){
-                    String teamName = dataSnapshot.child("Scrim").child("TeamName").getValue(String.class);
-                    String teamNum = dataSnapshot.child("Scrim").child("TeamNumber").getValue(String.class);
-                    Log.d("MyApp",teamName);
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot eventSnapshot : dataSnapshot.getChildren()) {
+                    for (DataSnapshot teamSnapshot : eventSnapshot.getChildren()) {
+                        String teamName = teamSnapshot.child("TeamName").getValue(String.class);
+                        String teamNum = teamSnapshot.child("TeamNumber").getValue(String.class);
+                        eventData eventData = new eventData(teamName,teamNum);
+                        Log.i("MyApp","Team Name is " + eventData.getTeamName());
+                    }
                 }
+
             }
 
             @Override
@@ -140,14 +150,6 @@ public class GeneralTeamInfo extends AppCompatActivity {
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
-    }
-
-    public void printMap(Map mp) {
-        Iterator it = mp.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry)it.next();
-            logger.info(pair.getKey() + " = " + pair.getValue());
-        }
     }
 
 }
