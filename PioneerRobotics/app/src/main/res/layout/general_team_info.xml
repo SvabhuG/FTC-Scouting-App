@@ -131,7 +131,7 @@
         android:layout_marginTop="92dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text=""
+        android:hint="Enter team name"
         android:textSize="14dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
@@ -143,7 +143,7 @@
         android:layout_marginTop="176dp"
         android:ems="10"
         android:inputType="text"
-        android:text=""
+        android:hint="Enter Team Number"
         android:textSize="14dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
@@ -160,14 +160,14 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/scorer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="272dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text=""
+        android:hint="Enter your name"
         android:textSize="14dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />

@@ -37,8 +37,8 @@ public class GeneralTeamInfo extends AppCompatActivity {
 
     Toolbar toolbar;
     Button submit_info, add_event_info;
-    public static EditText scorer, roundEditText;
-    public static AutoCompleteTextView teamNameEditText, teamNumberEditText, eventEditText;
+    public static EditText roundEditText;
+    public static AutoCompleteTextView teamNameEditText, teamNumberEditText, eventEditText, scorer;
     private Spinner intakeSpinner;
     private DatabaseReference mDatabase;
     public ArrayList<eventData> eventsOccurred = new ArrayList<>();
@@ -62,7 +62,7 @@ public class GeneralTeamInfo extends AppCompatActivity {
         teamNameEditText = findViewById(R.id.team_name);
         teamNumberEditText = findViewById(R.id.team_number);
         eventEditText = findViewById(R.id.eventEditText);
-        scorer = (EditText)findViewById(R.id.scorer);
+        scorer = findViewById(R.id.scorer);
         roundEditText = (EditText)findViewById(R.id.roundEditText);
         intakeSpinner = (Spinner)findViewById(R.id.intakeSpinner);
         add_event_info = (Button)findViewById(R.id.add_event_page_button);
@@ -77,15 +77,28 @@ public class GeneralTeamInfo extends AppCompatActivity {
         mechs.add("Grabbing Arm");
         mechs.add("Other");
 
+        List<String> scorers = new ArrayList<String>();
+        scorers.add("Harsh");
+        scorers.add("Allen");
+        scorers.add("Krish");
+        scorers.add("Svabhu");
+        scorers.add("Maahith");
+        scorers.add("Keerat");
+        scorers.add("Roma");
+        scorers.add("Jason");
+        scorers.add("Max");
+        scorers.add("Tejas");
+        scorers.add("Marcus");
+
+        ArrayAdapter<String> scorerAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,scorers);
+
 
         ArrayAdapter<String> eventAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,eventNames);
 
-
-
-
-
         eventEditText.setAdapter(eventAdapter);
+
+        scorer.setAdapter(scorerAdapter);
 
 
 
@@ -110,10 +123,6 @@ public class GeneralTeamInfo extends AppCompatActivity {
 
                             teamNameEditText.setAdapter(teamNamesAdapter);
 
-//                            ArrayAdapter<String> teamNumbersAdapter = new ArrayAdapter<String>(v.getContext(),
-//                                    android.R.layout.simple_list_item_1,teamNumbers);
-//
-//                            teamNumberEditText.setAdapter(teamNumbersAdapter);
                         }
                         count = 1;
                     }
@@ -121,6 +130,39 @@ public class GeneralTeamInfo extends AppCompatActivity {
                     if (!teamNameEditText.getText().toString().isEmpty()){
                         teamNumberEditText.setText(teamNumbers.get(teamNames.indexOf(teamNameEditText.getText().toString())));
                     }
+                }
+            }
+        });
+
+        teamNumberEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+                    if(teamNameEditText.getText().toString().isEmpty()){
+                        if(count==0){
+                            if(!eventEditText.getText().toString().isEmpty()){
+                                for (eventData obj: eventsOccurred) {
+                                    if (eventEditText.getText().toString().equals(obj.getEvent())){
+                                        teamNames.add(obj.getTeamName());
+                                        teamNumbers.add(obj.getTeamNumber());
+                                    }
+                                    Log.i("teamName", obj.getTeamName());
+                                }
+
+                                ArrayAdapter<String> teamNumbersAdapter = new ArrayAdapter<String>(v.getContext(),
+                                        android.R.layout.simple_list_item_1,teamNumbers);
+
+                                teamNumberEditText.setAdapter(teamNumbersAdapter);
+
+                                count = 1;
+                            }
+
+
+                        }
+                    }
+                }else {
+                    if(!teamNumberEditText.getText().toString().isEmpty())
+                    teamNameEditText.setText(teamNames.get(teamNumbers.indexOf(teamNumberEditText.getText().toString())));
                 }
             }
         });
