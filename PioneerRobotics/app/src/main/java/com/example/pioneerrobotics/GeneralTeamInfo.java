@@ -100,10 +100,6 @@ public class GeneralTeamInfo extends AppCompatActivity {
 
         scorer.setAdapter(scorerAdapter);
 
-
-
-
-
         teamNameEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -118,17 +114,18 @@ public class GeneralTeamInfo extends AppCompatActivity {
                                 Log.i("teamName", obj.getTeamName());
                             }
 
-                            ArrayAdapter<String> teamNamesAdapter = new ArrayAdapter<String>(v.getContext(),
-                                    android.R.layout.simple_list_item_1,teamNames);
-
-                            teamNameEditText.setAdapter(teamNamesAdapter);
-
                         }
                         count = 1;
                     }
+                    ArrayAdapter<String> teamNamesAdapter = new ArrayAdapter<String>(v.getContext(),
+                            android.R.layout.simple_list_item_1,teamNames);
+
+                    teamNameEditText.setAdapter(teamNamesAdapter);
                 } else{
                     if (!teamNameEditText.getText().toString().isEmpty()){
-                        teamNumberEditText.setText(teamNumbers.get(teamNames.indexOf(teamNameEditText.getText().toString())));
+                        if(teamNames.contains(teamNameEditText.getText().toString())) {
+                            teamNumberEditText.setText(teamNumbers.get(teamNames.indexOf(teamNameEditText.getText().toString())));
+                        }
                     }
                 }
             }
@@ -149,20 +146,21 @@ public class GeneralTeamInfo extends AppCompatActivity {
                                     Log.i("teamName", obj.getTeamName());
                                 }
 
-                                ArrayAdapter<String> teamNumbersAdapter = new ArrayAdapter<String>(v.getContext(),
-                                        android.R.layout.simple_list_item_1,teamNumbers);
-
-                                teamNumberEditText.setAdapter(teamNumbersAdapter);
-
                                 count = 1;
                             }
 
 
                         }
+                        ArrayAdapter<String> teamNumbersAdapter = new ArrayAdapter<String>(v.getContext(),
+                                android.R.layout.simple_list_item_1,teamNumbers);
+
+                        teamNumberEditText.setAdapter(teamNumbersAdapter);
                     }
                 }else {
-                    if(!teamNumberEditText.getText().toString().isEmpty())
-                    teamNameEditText.setText(teamNames.get(teamNumbers.indexOf(teamNumberEditText.getText().toString())));
+                    if(!teamNumberEditText.getText().toString().isEmpty()) {
+                        if(teamNumbers.contains(teamNumberEditText.getText().toString()))
+                            teamNameEditText.setText(teamNames.get(teamNumbers.indexOf(teamNumberEditText.getText().toString())));
+                    }
                 }
             }
         });

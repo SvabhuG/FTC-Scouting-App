@@ -69,6 +69,7 @@ public class autonFragment extends Fragment {
         autonChronometer = auton_fragment.findViewById(R.id.autonChronometer);
         autonChronometer.setBase(SystemClock.elapsedRealtime());
         autonChronometer.start();
+
         autonChronometerRunning = true;
 
         //Initializing textViews

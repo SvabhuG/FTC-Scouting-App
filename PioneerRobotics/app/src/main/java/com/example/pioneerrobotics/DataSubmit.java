@@ -4,15 +4,16 @@ import android.provider.ContactsContract;
 import java.util.HashMap;
 public class DataSubmit {
   String teamName;//test fields for now. Can/will change later, are just for test purposes
-    int teamNum;
+    int teamNum, round;
     String eventName;
     String scorerName;
 
-    public DataSubmit(String name, int teamNum, String eventName, String scorerName) {
+    public DataSubmit(String name, int teamNum, String eventName, String scorerName, int round) {
       this.teamName = name;
       this.teamNum = teamNum;
       this.eventName = eventName;
       this.scorerName = scorerName;
+      this.round = round;
     }
 
   public Map<String, Object> toMap() {
@@ -20,7 +21,8 @@ public class DataSubmit {
     fields.put("Team Name", teamName);
     fields.put("Team Number", teamNum);
     fields.put("Event Name", eventName);
-    fields.put("Score", scorerName);
+    fields.put("Scorer", scorerName);
+    fields.put("Round", round);
     return fields;
   }
 
@@ -65,12 +67,14 @@ class AutonomousData {
 
 class TeleOpData {
     int teleOpScore, teleHeight, teleDelivered, telePlaced;
+    String role;
 
-    public TeleOpData(int teleOpScore, int teleHeight, int teleDelivered, int telePlaced) {
+    public TeleOpData(int teleOpScore, int teleHeight, int teleDelivered, int telePlaced, String role) {
         this.teleOpScore = teleOpScore;
         this.teleHeight = teleHeight;
         this.teleDelivered = teleDelivered;
         this.telePlaced = telePlaced;
+        this.role = role;
     }
 
 
@@ -80,7 +84,8 @@ class TeleOpData {
         fields.put("TeleOp Stones Delivered", teleDelivered);
         fields.put("TeleOp Stones Placed", telePlaced);
         fields.put("Skyscraper Height", teleHeight);
-        fields.put("Tele-Op Score", teleOpScore);
+        fields.put("TeleOp Score", teleOpScore);
+        fields.put("Role", role);
         return fields;
     }
 

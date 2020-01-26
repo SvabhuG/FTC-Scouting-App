@@ -1,20 +1,27 @@
 package com.example.pioneerrobotics;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
+import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Chronometer;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.zip.Inflater;
 
 
@@ -30,13 +37,18 @@ public class teleFragment extends Fragment{
     public Button tele_delivered_add;
     public Button tele_delivered_minus;
     public Button tele_placed_add;
-    public Button tele_placed_minus;
+    public Button tele_placed_minus, startCycleChronometer, stopCycleChronometer;
     public static EditText tele_height_editText;
     public TextView tele_delivered_val_text;
-    public TextView tele_placed_val_text;
+    public TextView tele_placed_val_text, pushbot;
     public static int tele_delivered_val;
     public static int tele_placed_val;
     public static String autonTelePlaced = Integer.toString(autonFragment.auton_placing_val + tele_placed_val);
+    public Chronometer cycleChronometer;
+    private long cyclePauseOffset;
+    public ArrayList<Integer> cycleTimes = new ArrayList<>();
+    public static Switch robotType;
+
 
 
     @Override
@@ -51,8 +63,22 @@ public class teleFragment extends Fragment{
         tele_delivered_val_text = tele_fragment.findViewById(R.id.tele_delivered_val_text);
         tele_placed_val_text = tele_fragment.findViewById(R.id.tele_placed_val_text);
         tele_height_editText = (EditText) tele_fragment.findViewById(R.id.tele_height_editText);
+        robotType = tele_fragment.findViewById(R.id.robotType);
+        pushbot = tele_fragment.findViewById(R.id.pushbot);
 
+        robotType.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    pushbot.setTextColor(Color.rgb(169, 17, 1));
+                    robotType.setTextColor(Color.parseColor("#000000"));
 
+                } else {
+
+                    robotType.setTextColor(Color.rgb(169, 17, 1));
+                    pushbot.setTextColor(Color.parseColor("#000000"));
+                }
+            }
+        });
 
 
         tele_delivered_add.setOnClickListener(new View.OnClickListener() {
@@ -101,12 +127,14 @@ public class teleFragment extends Fragment{
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (Integer.parseInt(tele_height_editText.getText().toString()) > (autonFragment.auton_placing_val + tele_placed_val)){
-                    CharSequence text = "Skyscraper Height is greater than number of stones placed";
-                    int duration = Toast.LENGTH_SHORT;
-                    Context context = getActivity().getApplicationContext();
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+                if(!tele_height_editText.getText().toString().isEmpty()) {
+                    if (Integer.parseInt(tele_height_editText.getText().toString()) > (autonFragment.auton_placing_val + tele_placed_val)) {
+                        CharSequence text = "Skyscraper Height is greater than number of stones placed";
+                        int duration = Toast.LENGTH_SHORT;
+                        Context context = getActivity().getApplicationContext();
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
                 }
             }
 
@@ -115,9 +143,28 @@ public class teleFragment extends Fragment{
 
             }
         });
-
         return tele_fragment;
 
+    }
+
+    public boolean cycleChronometerRunning = false;
+
+    public void startChron(View v){
+        if (!cycleChronometerRunning) {
+            cycleChronometer.setBase(SystemClock.elapsedRealtime()-cyclePauseOffset);
+            cycleChronometer.start();
+            cycleChronometerRunning = true;
+        }
+    }
+    
+    public void stopChron(View v) {
+        if (cycleChronometerRunning){
+            cycleChronometer.stop();
+            cyclePauseOffset = SystemClock.elapsedRealtime()-cycleChronometer.getBase();
+            cycleChronometerRunning = false;
+            cycleTimes.add((int) (SystemClock.elapsedRealtime() - cycleChronometer.getBase())/1000);
+            Log.i("MyApp",Integer.toString(cycleTimes.get(0)));
+        }
     }
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

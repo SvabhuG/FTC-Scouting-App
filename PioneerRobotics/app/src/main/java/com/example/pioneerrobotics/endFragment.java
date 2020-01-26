@@ -14,6 +14,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 
@@ -39,6 +40,7 @@ public class endFragment extends Fragment {
     public static boolean foundationMovedOut, endParked;
     public static int autonScore, teleOpScore, endScore, totalScore, end_capstone_val;
     DatabaseReference database;
+    public String role;
 
 
 
@@ -62,9 +64,23 @@ public class endFragment extends Fragment {
         submit_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //addTeam();
-                writeNewPost();
-                openPostActivity();
+                if(teleFragment.tele_height_editText.getText().toString().isEmpty()){
+                    Toast.makeText(getContext(), "TeleOp Skyscraper Height is not defined", Toast.LENGTH_SHORT).show();
+                }
+                else if (firstCapHeight.getText().toString().isEmpty()){
+                    Toast.makeText(getContext(), "First Capstone Height is not defined", Toast.LENGTH_SHORT).show();
+                    firstCapHeight.setError("Input 0 if capstone is not placed");
+                    firstCapHeight.requestFocus();
+                }
+                else if (secondCapHeight.getText().toString().isEmpty()){
+                    Toast.makeText(getContext(), "Second Capstone Height is not defined", Toast.LENGTH_SHORT).show();
+                    secondCapHeight.setError("Input 0 if capstone is not placed");
+                    secondCapHeight.requestFocus();
+                }
+                else {
+                    writeNewPost();
+                    openPostActivity();
+                }
             }
         });
 
@@ -73,6 +89,9 @@ public class endFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 end_capstone_val++;
+                if (end_capstone_val>2){
+                    end_capstone_val = 2;
+                }
                 end_capstone_val_text.setText(String.valueOf(end_capstone_val));
             }
         });
@@ -126,7 +145,7 @@ public class endFragment extends Fragment {
         int round = Integer.parseInt(GeneralTeamInfo.roundEditText.getText().toString());
 
         //Finalize info data
-        DataSubmit info = new DataSubmit(teamName, teamNumber, event, scorer);
+        DataSubmit info = new DataSubmit(teamName, teamNumber, event, scorer, round);
         Map<String, Object> infoValues = info.toMap();
 
 
@@ -154,23 +173,29 @@ public class endFragment extends Fragment {
         int teleStonesDelivered = teleFragment.tele_delivered_val;
         int teleStonesPlaced = teleFragment.tele_placed_val;
         int teleHeight = Integer.parseInt(teleFragment.tele_height_editText.getText().toString());
+        if (teleFragment.robotType.isChecked()){
+            role = "Pushbot";
+        }
+        else {
+            role = "Stackbot";
+        }
 
         //Calculate tele op score
         teleOpScore = teleStonesDelivered + teleStonesPlaced + teleHeight;
 
         //Create a hashmap for tele op values
-        TeleOpData teleOp = new TeleOpData(teleOpScore,teleHeight,teleStonesDelivered,teleStonesPlaced);
+        TeleOpData teleOp = new TeleOpData(teleOpScore,teleHeight,teleStonesDelivered,teleStonesPlaced, role);
         Map<String, Object> teleOpValues = teleOp.toMap();
 
         //Endgame data
         int capstones = end_capstone_val;
         int capstoneHeight = Integer.parseInt(firstCapHeight.getText().toString());
         int secondCapstoneHeight = Integer.parseInt(secondCapHeight.getText().toString());
-
         //Calculate endgame score
         int foundationMovedOutPoints = ((foundationMovedOut) ? 15:0);
         int endParkingPoints = ((endParked) ? 5:0);
         endScore = capstones*5 + capstoneHeight + secondCapstoneHeight + foundationMovedOutPoints + endParkingPoints;
+        totalScore = autonScore + teleOpScore + endScore;
 
         //Create a hashmap for endgame values
         EndgameData endgame = new EndgameData(capstones,capstoneHeight,secondCapstoneHeight, foundationMovedOut, endParked,endScore, totalScore);

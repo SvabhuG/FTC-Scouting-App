@@ -94,7 +94,7 @@
         android:ems="5"
         android:textSize="16sp"
         android:inputType="textPersonName"
-        android:text="0"
+        android:hint="Height"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
@@ -132,7 +132,7 @@
         android:layout_marginTop="228dp"
         android:ems="5"
         android:inputType="textPersonName"
-        android:text="0"
+        android:hint="Height"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />

@@ -1244,10 +1244,12 @@ id percent
 id pin
 id progress_circular
 id progress_horizontal
+id pushbot
 id radio
 id right
 id right_icon
 id right_side
+id robotType
 id roundEditText
 id save_image_matrix
 id save_non_transition_alpha
