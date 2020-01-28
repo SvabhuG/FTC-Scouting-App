@@ -1,5 +1,6 @@
 package com.example.pioneerrobotics;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -39,6 +40,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void userLogin(){
+
+
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
@@ -65,7 +68,11 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             editTextPassword.requestFocus();
             return;
         }
-
+        final ProgressDialog progressDialog = new ProgressDialog(SignInActivity.this,
+                R.style.Theme_AppCompat_Light_Dialog);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Authenticating...");
+        progressDialog.show();
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
