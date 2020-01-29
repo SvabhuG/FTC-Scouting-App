@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
@@ -22,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
 
-    EditText editTextEmail, editTextPassword;
+    TextInputEditText editTextEmail, editTextPassword;
     private FirebaseAuth mAuth;
 
 
@@ -33,8 +34,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
 
-        editTextEmail = (EditText)findViewById(R.id.email);
-        editTextPassword = (EditText)findViewById(R.id.password);
+        editTextEmail = findViewById(R.id.team_name_signUp);
+        editTextPassword = findViewById(R.id.password);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -43,19 +44,13 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void registerUser(){
-        String email = editTextEmail.getText().toString().trim();
+        String teamName = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
-        if (email.isEmpty()){
+        if (teamName.isEmpty()){
            editTextEmail.setError("Email is required");
            editTextEmail.requestFocus();
            return;
-        }
-
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            editTextEmail.setError("Please enter a valid email");
-            editTextEmail.requestFocus();
-            return;
         }
 
         if (password.isEmpty()){
@@ -70,7 +65,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
 
-        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.createUserWithEmailAndPassword(teamName.replaceAll(" ","") + "@gmail.com",password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){

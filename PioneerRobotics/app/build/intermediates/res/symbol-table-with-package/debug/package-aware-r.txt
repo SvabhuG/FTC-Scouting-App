@@ -1162,7 +1162,6 @@ id dimensions
 id direct
 id disableHome
 id edit_query
-id email
 id email_signIn
 id end
 id endParking
@@ -1310,6 +1309,7 @@ id tag_unhandled_key_listeners
 id teamNameText
 id teamNumberText
 id team_name
+id team_name_signUp
 id team_number
 id teleScore
 id tele_delivered_add

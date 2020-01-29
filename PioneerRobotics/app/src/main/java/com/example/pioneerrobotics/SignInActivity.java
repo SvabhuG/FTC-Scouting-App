@@ -5,9 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -22,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener{
 
     FirebaseAuth mAuth;
-    EditText editTextEmail, editTextPassword;
+    TextInputEditText editTextTeamName, editTextPassword;
     SignUpActivity activity = new SignUpActivity();
 
 
@@ -32,7 +30,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.sign_in);
 
         mAuth = FirebaseAuth.getInstance();
-        editTextEmail = findViewById(R.id.email_signIn);
+        editTextTeamName = findViewById(R.id.team_name);
         editTextPassword = findViewById(R.id.password_signIn);
 
         findViewById(R.id.sign_up_textview).setOnClickListener(this);
@@ -42,18 +40,12 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private void userLogin(){
 
 
-        String email = editTextEmail.getText().toString().trim();
+        String teamName = editTextTeamName.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
-        if (email.isEmpty()){
-            editTextEmail.setError("Email is required");
-            editTextEmail.requestFocus();
-            return;
-        }
-
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            editTextEmail.setError("Please enter a valid email");
-            editTextEmail.requestFocus();
+        if (teamName.isEmpty()){
+            editTextTeamName.setError("Email is required");
+            editTextTeamName.requestFocus();
             return;
         }
 
@@ -73,7 +65,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(teamName.replaceAll(" ","")+"@gmail.com", password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){

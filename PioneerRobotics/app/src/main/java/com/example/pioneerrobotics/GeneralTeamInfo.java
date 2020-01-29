@@ -57,15 +57,15 @@ public class GeneralTeamInfo extends AppCompatActivity {
 
 
 
-        toolbar = (Toolbar)findViewById((R.id.toolbar));
-        submit_info = (Button)findViewById(R.id.submit_info);
+        toolbar = findViewById((R.id.toolbar));
+        submit_info = findViewById(R.id.submit_info);
         teamNameEditText = findViewById(R.id.team_name);
         teamNumberEditText = findViewById(R.id.team_number);
         eventEditText = findViewById(R.id.eventEditText);
         scorer = findViewById(R.id.scorer);
-        roundEditText = (EditText)findViewById(R.id.roundEditText);
-        intakeSpinner = (Spinner)findViewById(R.id.intakeSpinner);
-        add_event_info = (Button)findViewById(R.id.add_event_page_button);
+        roundEditText = findViewById(R.id.roundEditText);
+        intakeSpinner = findViewById(R.id.intakeSpinner);
+        add_event_info = findViewById(R.id.add_event_page_button);
         mDatabase = FirebaseDatabase.getInstance().getReference("events");
 
         readFromDatabase();

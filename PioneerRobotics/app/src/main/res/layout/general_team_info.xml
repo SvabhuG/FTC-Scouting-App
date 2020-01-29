@@ -84,7 +84,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:text="Event :"
         android:textColor="#000000"
         android:textSize="20dp"
@@ -124,17 +124,22 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
-    <AutoCompleteTextView
-        android:id="@+id/team_name"
-        android:layout_width="171dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="92dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Enter team name"
-        android:textSize="14dp"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="370dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="128dp"
+        app:boxStrokeColor="#A91101"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-        app:layout_constraintTop_toTopOf="@+id/guideline_top" />
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toTopOf="@+id/guideline_top">
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/team_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <AutoCompleteTextView
         android:id="@+id/team_number"
@@ -148,17 +153,24 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
-    <AutoCompleteTextView
-        android:id="@+id/eventEditText"
-        android:layout_width="166dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="Select an event"
-        android:inputType="textPersonName"
-        android:textSize="14dp"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="370dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="48dp"
+
+        app:boxStrokeColor="#A91101"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-        app:layout_constraintTop_toTopOf="@+id/guideline_top" />
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toTopOf="@+id/guideline_top">
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/eventEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <AutoCompleteTextView
         android:id="@+id/scorer"

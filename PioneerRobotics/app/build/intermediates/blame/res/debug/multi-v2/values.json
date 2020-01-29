@@ -1,8 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\svabh\\AndroidStudioProjects\\FTC-Scouting-App\\PioneerRobotics\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\Users\\svabh\\Documents\\FTC-Scouting-App\\PioneerRobotics\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
+                {
+                    "source": "C:\\Users\\svabh\\Documents\\FTC-Scouting-App\\PioneerRobotics\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "1,6,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "17,248,132,203",
+                        "endColumns": "52,45,69,43",
+                        "endOffsets": "65,289,197,242"
+                    },
+                    "to": {
+                        "startLines": "582,585,615,617",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "35118,35452,39116,39339",
+                        "endColumns": "52,45,69,43",
+                        "endOffsets": "35166,35493,39181,39378"
+                    }
+                },
                 {
                     "source": "C:\\Users\\svabh\\.gradle\\caches\\transforms-2\\files-2.1\\6d206c10dfcd7e4d261b33c292c090cb\\play-services-base-17.1.0\\res\\values\\values.xml",
                     "from": {
@@ -37,42 +54,6 @@
                         "startOffsets": "13756,28828,28881,28934,28987,154439,154615,154737,154999,155194",
                         "endColumns": "88,52,52,52,52,65,121,60,65,66",
                         "endOffsets": "13840,28876,28929,28982,29035,154500,154732,154793,155060,155256"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\svabh\\AndroidStudioProjects\\FTC-Scouting-App\\PioneerRobotics\\app\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "1,6,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "17,248,132,203",
-                        "endColumns": "52,45,69,43",
-                        "endOffsets": "65,289,197,242"
-                    },
-                    "to": {
-                        "startLines": "582,585,615,617",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "35118,35452,39116,39339",
-                        "endColumns": "52,45,69,43",
-                        "endOffsets": "35166,35493,39181,39378"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\svabh\\AndroidStudioProjects\\FTC-Scouting-App\\PioneerRobotics\\app\\src\\main\\res\\values\\styles.xml",
-                    "from": {
-                        "startLines": "3,29,24,30,10",
-                        "startColumns": "4,4,4,4,4",
-                        "startOffsets": "57,968,812,1060,366",
-                        "endLines": "8,29,27,30,21",
-                        "endColumns": "12,90,12,80,12",
-                        "endOffsets": "358,1054,960,1136,802"
-                    },
-                    "to": {
-                        "startLines": "636,642,643,647,2268",
-                        "startColumns": "4,4,4,4,4",
-                        "startOffsets": "41191,41492,41582,41732,147977",
-                        "endLines": "641,642,646,647,2279",
-                        "endColumns": "12,89,12,79,12",
-                        "endOffsets": "41487,41577,41727,41807,148402"
                     }
                 },
                 {
@@ -114,20 +95,20 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\svabh\\.gradle\\caches\\transforms-2\\files-2.1\\bfcee8f343cc54539c725cd290739809\\jetified-play-services-basement-17.0.0\\res\\values\\values.xml",
+                    "source": "C:\\Users\\svabh\\Documents\\FTC-Scouting-App\\PioneerRobotics\\app\\build\\generated\\res\\google-services\\debug\\values\\values.xml",
                     "from": {
-                        "startLines": "4,7",
-                        "startColumns": "0,0",
-                        "startOffsets": "238,401",
-                        "endColumns": "63,166",
-                        "endOffsets": "301,567"
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,199,315,397,501,610,730,835",
+                        "endColumns": "143,115,81,103,108,119,104,81",
+                        "endOffsets": "194,310,392,496,605,725,830,912"
                     },
                     "to": {
-                        "startLines": "535,596",
-                        "startColumns": "4,4",
-                        "startOffsets": "31863,36729",
-                        "endColumns": "67,166",
-                        "endOffsets": "31926,36891"
+                        "startLines": "606,609,610,611,612,613,614,624",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "38022,38480,38596,38678,38782,38891,39011,40266",
+                        "endColumns": "143,115,81,103,108,119,104,81",
+                        "endOffsets": "38161,38591,38673,38777,38886,39006,39111,40343"
                     }
                 },
                 {
@@ -169,26 +150,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\svabh\\.gradle\\caches\\transforms-2\\files-2.1\\47746cad00cfcd8c16887c338d7609a3\\recyclerview-1.0.0\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "30,31,32,33,34,35,36,2",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "1535,1594,1642,1698,1773,1849,1921,55",
-                        "endLines": "30,31,32,33,34,35,36,29",
-                        "endColumns": "58,47,55,74,75,71,65,24",
-                        "endOffsets": "1589,1637,1693,1768,1844,1916,1982,1530"
-                    },
-                    "to": {
-                        "startLines": "401,402,403,411,412,413,497,4330",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "24003,24062,24110,24777,24852,24928,29920,278651",
-                        "endLines": "401,402,403,411,412,413,497,4357",
-                        "endColumns": "58,47,55,74,75,71,65,24",
-                        "endOffsets": "24057,24105,24161,24847,24923,24995,29981,280126"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\svabh\\AndroidStudioProjects\\FTC-Scouting-App\\PioneerRobotics\\app\\src\\main\\res\\values\\colors.xml",
+                    "source": "C:\\Users\\svabh\\Documents\\FTC-Scouting-App\\PioneerRobotics\\app\\src\\main\\res\\values\\colors.xml",
                     "from": {
                         "startLines": "4,2,3,6,7,8",
                         "startColumns": "4,4,4,4,4,4",
@@ -205,20 +167,39 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\svabh\\AndroidStudioProjects\\FTC-Scouting-App\\PioneerRobotics\\app\\build\\generated\\res\\google-services\\debug\\values\\values.xml",
+                    "source": "C:\\Users\\svabh\\.gradle\\caches\\transforms-2\\files-2.1\\1b5162be92c89562749f2bc7d62c76c1\\jetified-play-services-basement-17.0.0\\res\\values\\values.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,199,315,397,501,610,730,835",
-                        "endColumns": "143,115,81,103,108,119,104,81",
-                        "endOffsets": "194,310,392,496,605,725,830,912"
+                        "startLines": "4,7",
+                        "startColumns": "0,0",
+                        "startOffsets": "238,401",
+                        "endColumns": "63,166",
+                        "endOffsets": "301,567"
                     },
                     "to": {
-                        "startLines": "606,609,610,611,612,613,614,624",
+                        "startLines": "535,596",
+                        "startColumns": "4,4",
+                        "startOffsets": "31863,36729",
+                        "endColumns": "67,166",
+                        "endOffsets": "31926,36891"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\svabh\\.gradle\\caches\\transforms-2\\files-2.1\\47746cad00cfcd8c16887c338d7609a3\\recyclerview-1.0.0\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "30,31,32,33,34,35,36,2",
                         "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "38022,38480,38596,38678,38782,38891,39011,40266",
-                        "endColumns": "143,115,81,103,108,119,104,81",
-                        "endOffsets": "38161,38591,38673,38777,38886,39006,39111,40343"
+                        "startOffsets": "1535,1594,1642,1698,1773,1849,1921,55",
+                        "endLines": "30,31,32,33,34,35,36,29",
+                        "endColumns": "58,47,55,74,75,71,65,24",
+                        "endOffsets": "1589,1637,1693,1768,1844,1916,1982,1530"
+                    },
+                    "to": {
+                        "startLines": "401,402,403,411,412,413,497,4330",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "24003,24062,24110,24777,24852,24928,29920,278651",
+                        "endLines": "401,402,403,411,412,413,497,4357",
+                        "endColumns": "58,47,55,74,75,71,65,24",
+                        "endOffsets": "24057,24105,24161,24847,24923,24995,29981,280126"
                     }
                 },
                 {
@@ -274,6 +255,25 @@
                         "startOffsets": "29846,30176,30315,30362,30417,31011,31065,31117,31166,31227",
                         "endColumns": "39,42,46,54,44,53,51,48,60,49",
                         "endOffsets": "29881,30214,30357,30412,30457,31060,31112,31161,31222,31272"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\svabh\\Documents\\FTC-Scouting-App\\PioneerRobotics\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "3,29,24,30,10",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "57,968,812,1060,366",
+                        "endLines": "8,29,27,30,21",
+                        "endColumns": "12,90,12,80,12",
+                        "endOffsets": "358,1054,960,1136,802"
+                    },
+                    "to": {
+                        "startLines": "636,642,643,647,2268",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "41191,41492,41582,41732,147977",
+                        "endLines": "641,642,646,647,2279",
+                        "endColumns": "12,89,12,79,12",
+                        "endOffsets": "41487,41577,41727,41807,148402"
                     }
                 }
             ]
