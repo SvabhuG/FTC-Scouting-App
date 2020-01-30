@@ -41,32 +41,6 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
-    <TextView
-        android:id="@+id/end_capstone1_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:text="First Capstone"
-        android:textColor="#000000"
-        android:textSize="24dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toTopOf="@+id/guideline_top" />
-
-    <TextView
-        android:id="@+id/end_capstone2_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="228dp"
-        android:text="Second Capstone"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toTopOf="@+id/guideline_top" />
-
     <Button
         android:id="@+id/end_capstone_minus"
         android:layout_width="85dp"
@@ -86,17 +60,25 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
-    <EditText
-        android:id="@+id/end_capstone1_height_editText"
-        android:layout_width="83dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="120dp"
-        android:ems="5"
-        android:textSize="16sp"
-        android:inputType="textPersonName"
-        android:hint="Height"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout3"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="228dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="112dp"
+        android:hint="First Capstone Height"
+        app:boxStrokeColor="#A91101"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-        app:layout_constraintTop_toTopOf="@+id/guideline_top" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toTopOf="@+id/guideline_top">
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/end_capstone1_height_editText"
+            android:layout_width="match_parent"
+            android:layout_height="46dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Switch
         android:id="@+id/end_foundation"
@@ -125,17 +107,26 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
-    <EditText
-        android:id="@+id/end_capstone2_height_editText"
-        android:layout_width="83dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="228dp"
-        android:ems="5"
-        android:inputType="textPersonName"
-        android:hint="Height"
-        android:textSize="16sp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout9"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="228dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="184dp"
+        android:hint="First Capstone Height"
+        app:boxStrokeColor="#A91101"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-        app:layout_constraintTop_toTopOf="@+id/guideline_top" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toTopOf="@+id/guideline_top">
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/end_capstone2_height_editText"
+            android:layout_width="match_parent"
+            android:layout_height="46dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <TextView
         android:id="@+id/end_capstones_val_text"

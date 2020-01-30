@@ -16,6 +16,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 
 import com.google.firebase.database.FirebaseDatabase;
@@ -35,7 +36,7 @@ public class endFragment extends Fragment {
 
     Button end_capstone_add, end_capstone_minus, submit_data;
     TextView end_capstone_val_text;
-    public static EditText firstCapHeight, secondCapHeight;
+    public static TextInputEditText firstCapHeight, secondCapHeight;
     Switch endFoundation, endParking;
     public static boolean foundationMovedOut, endParked;
     public static int autonScore, teleOpScore, endScore, totalScore, end_capstone_val;

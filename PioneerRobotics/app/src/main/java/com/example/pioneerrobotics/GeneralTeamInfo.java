@@ -64,9 +64,9 @@ public class GeneralTeamInfo extends AppCompatActivity {
         eventEditText = findViewById(R.id.eventEditText);
         scorer = findViewById(R.id.scorer);
         roundEditText = findViewById(R.id.roundEditText);
-        intakeSpinner = findViewById(R.id.intakeSpinner);
         add_event_info = findViewById(R.id.add_event_page_button);
         mDatabase = FirebaseDatabase.getInstance().getReference("events");
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
         readFromDatabase();
 
@@ -113,9 +113,9 @@ public class GeneralTeamInfo extends AppCompatActivity {
                                 }
                                 Log.i("teamName", obj.getTeamName());
                             }
-
+                            count = 1;
                         }
-                        count = 1;
+
                     }
                     ArrayAdapter<String> teamNamesAdapter = new ArrayAdapter<String>(v.getContext(),
                             android.R.layout.simple_list_item_1,teamNames);
@@ -167,8 +167,8 @@ public class GeneralTeamInfo extends AppCompatActivity {
 
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-                R.layout.support_simple_spinner_dropdown_item,mechs);
-        dataAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+                R.layout.spinner_item,mechs);
+        dataAdapter.setDropDownViewResource(R.layout.spinner_item);
         intakeSpinner.setAdapter(dataAdapter);
 
         add_event_info.setOnClickListener(new View.OnClickListener() {
