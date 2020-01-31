@@ -39,7 +39,6 @@ public class GeneralTeamInfo extends AppCompatActivity {
     Button submit_info, add_event_info;
     public static EditText roundEditText;
     public static AutoCompleteTextView teamNameEditText, teamNumberEditText, eventEditText, scorer;
-    private Spinner intakeSpinner;
     private DatabaseReference mDatabase;
     public ArrayList<eventData> eventsOccurred = new ArrayList<>();
     List<String> eventNames = new ArrayList<>();
@@ -54,9 +53,6 @@ public class GeneralTeamInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.general_team_info);
-
-
-
         toolbar = findViewById((R.id.toolbar));
         submit_info = findViewById(R.id.submit_info);
         teamNameEditText = findViewById(R.id.team_name);
@@ -65,17 +61,11 @@ public class GeneralTeamInfo extends AppCompatActivity {
         scorer = findViewById(R.id.scorer);
         roundEditText = findViewById(R.id.roundEditText);
         add_event_info = findViewById(R.id.add_event_page_button);
-        mDatabase = FirebaseDatabase.getInstance().getReference("events");
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        mDatabase = FirebaseDatabase.getInstance().getReference("events");
+
 
         readFromDatabase();
-
-
-        List<String> mechs = new ArrayList<>();
-        mechs.add("Forklift");
-        mechs.add("Intake Wheels");
-        mechs.add("Grabbing Arm");
-        mechs.add("Other");
 
         List<String> scorers = new ArrayList<String>();
         scorers.add("Harsh");
@@ -166,10 +156,7 @@ public class GeneralTeamInfo extends AppCompatActivity {
         });
 
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-                R.layout.spinner_item,mechs);
-        dataAdapter.setDropDownViewResource(R.layout.spinner_item);
-        intakeSpinner.setAdapter(dataAdapter);
+
 
         add_event_info.setOnClickListener(new View.OnClickListener() {
             @Override

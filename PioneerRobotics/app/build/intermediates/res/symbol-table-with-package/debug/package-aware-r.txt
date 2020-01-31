@@ -1169,9 +1169,7 @@ id end
 id endParking
 id endScore
 id end_capstone1_height_editText
-id end_capstone1_text
 id end_capstone2_height_editText
-id end_capstone2_text
 id end_capstone_add
 id end_capstone_minus
 id end_capstones_val_text
@@ -1323,7 +1321,6 @@ id tele_placed_add
 id tele_placed_minus
 id tele_placed_text
 id tele_placed_val_text
-id tele_skyscraper_text
 id text
 id text2
 id textInputLayout
@@ -1331,6 +1328,7 @@ id textInputLayout2
 id textInputLayout3
 id textInputLayout4
 id textInputLayout5
+id textInputLayout9
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart

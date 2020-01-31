@@ -21,6 +21,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 import java.util.ArrayList;
 import java.util.zip.Inflater;
 
@@ -38,7 +40,7 @@ public class teleFragment extends Fragment{
     public Button tele_delivered_minus;
     public Button tele_placed_add;
     public Button tele_placed_minus, startCycleChronometer, stopCycleChronometer;
-    public static EditText tele_height_editText;
+    public static TextInputEditText tele_height_editText;
     public TextView tele_delivered_val_text;
     public TextView tele_placed_val_text, pushbot;
     public static int tele_delivered_val;
@@ -62,7 +64,7 @@ public class teleFragment extends Fragment{
         tele_placed_minus = tele_fragment.findViewById(R.id.tele_placed_minus);
         tele_delivered_val_text = tele_fragment.findViewById(R.id.tele_delivered_val_text);
         tele_placed_val_text = tele_fragment.findViewById(R.id.tele_placed_val_text);
-        tele_height_editText = (EditText) tele_fragment.findViewById(R.id.tele_height_editText);
+        tele_height_editText = tele_fragment.findViewById(R.id.tele_height_editText);
         robotType = tele_fragment.findViewById(R.id.robotType);
         pushbot = tele_fragment.findViewById(R.id.pushbot);
 
