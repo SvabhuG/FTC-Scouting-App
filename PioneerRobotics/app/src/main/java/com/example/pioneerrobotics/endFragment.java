@@ -39,7 +39,7 @@ public class endFragment extends Fragment {
     public static TextInputEditText firstCapHeight, secondCapHeight;
     Switch endFoundation, endParking;
     public static boolean foundationMovedOut, endParked;
-    public static int autonScore, teleOpScore, endScore, totalScore, end_capstone_val;
+    public static int autonScore, teleOpScore, endScore, totalScore, end_capstone_val, teleHeight;
     DatabaseReference database;
     public String role;
 
@@ -142,11 +142,10 @@ public class endFragment extends Fragment {
         int teamNumber = Integer.parseInt(GeneralTeamInfo.teamNumberEditText.getText().toString());
         String teamName = GeneralTeamInfo.teamNameEditText.getText().toString();
         String event = GeneralTeamInfo.eventEditText.getText().toString();
-        String scorer = GeneralTeamInfo.scorer.getText().toString();
         int round = Integer.parseInt(GeneralTeamInfo.roundEditText.getText().toString());
 
         //Finalize info data
-        DataSubmit info = new DataSubmit(teamName, teamNumber, event, scorer, round);
+        DataSubmit info = new DataSubmit(teamName, teamNumber, event, round);
         Map<String, Object> infoValues = info.toMap();
 
 
@@ -173,7 +172,12 @@ public class endFragment extends Fragment {
         //Tele Op data
         int teleStonesDelivered = teleFragment.tele_delivered_val;
         int teleStonesPlaced = teleFragment.tele_placed_val;
-        int teleHeight = Integer.parseInt(teleFragment.tele_height_editText.getText().toString());
+
+        if (teleFragment.tele_height_editText.getText().toString().isEmpty())
+            teleHeight = 0;
+        else
+            teleHeight = Integer.parseInt(teleFragment.tele_height_editText.getText().toString());
+
         if (teleFragment.robotType.isChecked()){
             role = "Pushbot";
         }

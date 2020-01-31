@@ -6,13 +6,11 @@ public class DataSubmit {
   String teamName;//test fields for now. Can/will change later, are just for test purposes
     int teamNum, round;
     String eventName;
-    String scorerName;
 
-    public DataSubmit(String name, int teamNum, String eventName, String scorerName, int round) {
+    public DataSubmit(String name, int teamNum, String eventName, int round) {
       this.teamName = name;
       this.teamNum = teamNum;
       this.eventName = eventName;
-      this.scorerName = scorerName;
       this.round = round;
     }
 
@@ -21,7 +19,6 @@ public class DataSubmit {
     fields.put("Team Name", teamName);
     fields.put("Team Number", teamNum);
     fields.put("Event Name", eventName);
-    fields.put("Scorer", scorerName);
     fields.put("Round", round);
     return fields;
   }

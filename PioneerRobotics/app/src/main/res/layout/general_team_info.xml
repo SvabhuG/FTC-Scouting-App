@@ -20,7 +20,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#A91101"
+            android:background="#a91101"
             app:layout_scrollFlags="scroll|enterAlways">
 
             <TextView
@@ -77,7 +77,7 @@
         android:layout_height="51dp"
         android:layout_marginTop="144dp"
         android:hint="Team Name"
-        app:boxStrokeColor="#A91101"
+        app:boxStrokeColor="#a91101"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_top">
@@ -96,7 +96,7 @@
         android:layout_height="55dp"
         android:layout_marginTop="216dp"
         android:hint="Team Number"
-        app:boxStrokeColor="#A91101"
+        app:boxStrokeColor="#a91101"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_top">
@@ -116,7 +116,7 @@
         android:layout_height="46dp"
         android:layout_marginTop="72dp"
         android:hint="Event"
-        app:boxStrokeColor="#A91101"
+        app:boxStrokeColor="#a91101"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_top">
@@ -135,7 +135,7 @@
         android:layout_height="46dp"
         android:layout_marginTop="288dp"
         android:hint="Scorer"
-        app:boxStrokeColor="#A91101"
+        app:boxStrokeColor="#a91101"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_top">
@@ -154,12 +154,12 @@
         android:layout_height="46dp"
         android:layout_marginTop="360dp"
         android:hint="Round"
-        app:boxStrokeColor="#A91101"
+        app:boxStrokeColor="#a91101"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_top">
 
-        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/roundEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

@@ -22,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,7 +38,7 @@ public class GeneralTeamInfo extends AppCompatActivity {
 
     Toolbar toolbar;
     Button submit_info, add_event_info;
-    public static EditText roundEditText;
+    public static TextInputEditText roundEditText;
     public static AutoCompleteTextView teamNameEditText, teamNumberEditText, eventEditText, scorer;
     private DatabaseReference mDatabase;
     public ArrayList<eventData> eventsOccurred = new ArrayList<>();
@@ -72,7 +73,7 @@ public class GeneralTeamInfo extends AppCompatActivity {
         scorers.add("Allen");
         scorers.add("Krish");
         scorers.add("Svabhu");
-        scorers.add("Maahith");
+        scorers.add("Mahith");
         scorers.add("Keerat");
         scorers.add("Roma");
         scorers.add("Jason");
@@ -175,7 +176,18 @@ public class GeneralTeamInfo extends AppCompatActivity {
                 String scorerText = scorer.getText().toString();
                 String roundText = roundEditText.getText().toString();
 
-                if (team_name.isEmpty()){
+                boolean numeric = true;
+
+                try {
+                    Double num = Double.parseDouble(roundText);
+                } catch (NumberFormatException e) {
+                    numeric = false;
+                }
+                if (!numeric){
+                    roundEditText.setError("Round must be a number");
+                    roundEditText.requestFocus();
+                }
+                else if (team_name.isEmpty()){
                     teamNameEditText.setError("Team name is required");
                     teamNameEditText.requestFocus();
                 }
@@ -195,6 +207,7 @@ public class GeneralTeamInfo extends AppCompatActivity {
                     roundEditText.setError("Scorer name is required");
                     roundEditText.requestFocus();
                 }
+
                 else openMainActivity();
             }
         });

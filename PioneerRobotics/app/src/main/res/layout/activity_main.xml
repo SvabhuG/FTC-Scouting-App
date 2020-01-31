@@ -16,12 +16,12 @@
             android:id="@+id/toolbar"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:background="#A91101"
+            android:background="#a91101"
             app:layout_scrollFlags="scroll|enterAlways">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="SJ Pioneer Robotics"
+                android:text="FTC Scouting"
                 android:textSize="32dp"
                 android:textColor="#FFFFFF"
                 android:gravity = "center"
@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:tabTextColor="#000000"
-                app:tabSelectedTextColor="#A91101"
+                app:tabSelectedTextColor="#a91101"
                 >
 
                 <com.google.android.material.tabs.TabItem
