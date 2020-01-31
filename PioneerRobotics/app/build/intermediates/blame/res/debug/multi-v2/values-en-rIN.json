@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\svabh\\AndroidStudioProjects\\FTC-Scouting-App\\PioneerRobotics\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rIN\\values-en-rIN.xml",
+            "outputFile": "C:\\Users\\svabh\\Documents\\FTC-Scouting-App\\PioneerRobotics\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rIN\\values-en-rIN.xml",
             "map": [
                 {
                     "source": "C:\\Users\\svabh\\.gradle\\caches\\transforms-2\\files-2.1\\75e70da198df93807ed751edcaee621f\\core-1.0.1\\res\\values-en-rIN\\values-en-rIN.xml",

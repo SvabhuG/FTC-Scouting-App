@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\svabh\\AndroidStudioProjects\\FTC-Scouting-App\\PioneerRobotics\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ml\\values-ml.xml",
+            "outputFile": "C:\\Users\\svabh\\Documents\\FTC-Scouting-App\\PioneerRobotics\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ml\\values-ml.xml",
             "map": [
                 {
                     "source": "C:\\Users\\svabh\\.gradle\\caches\\transforms-2\\files-2.1\\322b93496bc0a8d8306a6c7db877b529\\appcompat-1.0.2\\res\\values-ml\\values-ml.xml",
@@ -55,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\svabh\\.gradle\\caches\\transforms-2\\files-2.1\\bfcee8f343cc54539c725cd290739809\\jetified-play-services-basement-17.0.0\\res\\values-ml\\values.xml",
+                    "source": "C:\\Users\\svabh\\.gradle\\caches\\transforms-2\\files-2.1\\1b5162be92c89562749f2bc7d62c76c1\\jetified-play-services-basement-17.0.0\\res\\values-ml\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",

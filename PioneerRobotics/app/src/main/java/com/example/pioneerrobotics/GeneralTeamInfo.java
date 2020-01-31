@@ -37,7 +37,7 @@ public class GeneralTeamInfo extends AppCompatActivity {
     private static final String TAG = "GeneralTeamInfo";
 
     Toolbar toolbar;
-    Button submit_info, add_event_info;
+    Button submit_info, add_event_info, analyticsOpen;
     public static TextInputEditText roundEditText;
     public static AutoCompleteTextView teamNameEditText, teamNumberEditText, eventEditText, scorer;
     private DatabaseReference mDatabase;
@@ -62,6 +62,7 @@ public class GeneralTeamInfo extends AppCompatActivity {
         scorer = findViewById(R.id.scorer);
         roundEditText = findViewById(R.id.roundEditText);
         add_event_info = findViewById(R.id.add_event_page_button);
+        analyticsOpen = findViewById(R.id.analytics);
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         mDatabase = FirebaseDatabase.getInstance().getReference("events");
 
@@ -166,6 +167,12 @@ public class GeneralTeamInfo extends AppCompatActivity {
             }
         });
 
+        analyticsOpen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAnalytics();
+            }
+        });
 
         submit_info.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,6 +223,10 @@ public class GeneralTeamInfo extends AppCompatActivity {
 
     public void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+    public void openAnalytics(){
+        Intent intent = new Intent(this, Analytics.class);
         startActivity(intent);
     }
 

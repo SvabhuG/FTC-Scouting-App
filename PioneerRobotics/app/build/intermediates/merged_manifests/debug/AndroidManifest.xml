@@ -24,7 +24,6 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity android:name="com.example.pioneerrobotics.SignInActivity" >
             <intent-filter>
@@ -37,6 +36,7 @@
         <activity android:name="com.example.pioneerrobotics.SignUpActivity" />
         <activity android:name="com.example.pioneerrobotics.GeneralTeamInfo" />
         <activity android:name="com.example.pioneerrobotics.MainActivity" />
+        <activity android:name="com.example.pioneerrobotics.Analytics" />
         <activity android:name="com.example.pioneerrobotics.PostMatchActivity" />
 
         <service

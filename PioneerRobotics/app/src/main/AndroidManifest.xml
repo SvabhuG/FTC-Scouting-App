@@ -20,6 +20,7 @@
         <activity android:name=".SignUpActivity" ></activity>
         <activity android:name=".GeneralTeamInfo" ></activity>
         <activity android:name=".MainActivity" ></activity>
+        <activity android:name=".Analytics" ></activity>
         <activity android:name=".PostMatchActivity"></activity>
     </application>
 

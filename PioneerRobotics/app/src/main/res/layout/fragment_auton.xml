@@ -15,7 +15,6 @@
         android:layout_width="85dp"
         android:layout_height="40dp"
         android:layout_marginTop="112dp"
-        android:background="@drawable/rounded_corners"
         android:text="-"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
@@ -25,7 +24,6 @@
         android:layout_width="85dp"
         android:layout_height="40dp"
         android:layout_marginTop="172dp"
-        android:background="@drawable/rounded_corners"
         android:text="-"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
@@ -34,7 +32,6 @@
         android:id="@+id/auton_placing_minus"
         android:layout_width="85dp"
         android:layout_height="40dp"
-        android:background="@drawable/rounded_corners"
         android:layout_marginTop="236dp"
         android:text="-"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
@@ -148,7 +145,6 @@
         android:layout_height="40dp"
         android:layout_marginTop="112dp"
         android:layout_marginEnd="88dp"
-        android:background="@drawable/rounded_corners"
         android:text="+"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
@@ -159,7 +155,6 @@
         android:layout_height="43dp"
         android:layout_marginTop="172dp"
         android:layout_marginEnd="88dp"
-        android:background="@drawable/rounded_corners"
         android:text="+"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
@@ -168,7 +163,6 @@
         android:id="@+id/auton_placing_add"
         android:layout_width="85dp"
         android:layout_height="40dp"
-        android:background="@drawable/rounded_corners"
         android:layout_marginTop="236dp"
         android:layout_marginEnd="88dp"
         android:text="+"
@@ -179,7 +173,6 @@
         android:id="@+id/autonFoundationStart"
         android:layout_width="85dp"
         android:layout_height="40dp"
-        android:background="@drawable/rounded_corners"
         android:layout_marginTop="348dp"
         android:layout_marginEnd="256dp"
         android:text="Start"
@@ -191,7 +184,7 @@
         android:layout_width="85dp"
         android:layout_height="40dp"
         android:layout_marginTop="348dp"
-        android:background="@drawable/rounded_corners"
+
         android:layout_marginEnd="172dp"
         android:text="Stop"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
@@ -202,7 +195,7 @@
         android:layout_width="85dp"
         android:layout_height="40dp"
         android:layout_marginTop="496dp"
-        android:background="@drawable/rounded_corners"
+
         android:layout_marginEnd="80dp"
         android:text="Stop"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
