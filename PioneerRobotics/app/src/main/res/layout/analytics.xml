@@ -58,6 +58,14 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="16dp" />
 
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barchart"
+        android:layout_width="373dp"
+        android:layout_height="181dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

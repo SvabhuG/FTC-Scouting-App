@@ -37,8 +37,8 @@ public final class R {
         public static final int layout_insetEdge = 0x7f03014e;
         public static final int layout_keyline = 0x7f03014f;
         public static final int scopeUris = 0x7f03018c;
-        public static final int statusBarBackground = 0x7f0301b0;
-        public static final int ttcIndex = 0x7f030212;
+        public static final int statusBarBackground = 0x7f0301ac;
+        public static final int ttcIndex = 0x7f03020e;
     }
     public static final class color {
         private color() {}
@@ -227,7 +227,7 @@ public final class R {
         public static final int ColorStateListItem_android_color = 0;
         public static final int ColorStateListItem_android_alpha = 1;
         public static final int ColorStateListItem_alpha = 2;
-        public static final int[] CoordinatorLayout = { 0x7f030112, 0x7f0301b0 };
+        public static final int[] CoordinatorLayout = { 0x7f030112, 0x7f0301ac };
         public static final int CoordinatorLayout_keylines = 0;
         public static final int CoordinatorLayout_statusBarBackground = 1;
         public static final int[] CoordinatorLayout_Layout = { 0x10100b3, 0x7f030117, 0x7f030118, 0x7f030119, 0x7f030145, 0x7f03014e, 0x7f03014f };
@@ -245,7 +245,7 @@ public final class R {
         public static final int FontFamily_fontProviderFetchTimeout = 3;
         public static final int FontFamily_fontProviderPackage = 4;
         public static final int FontFamily_fontProviderQuery = 5;
-        public static final int[] FontFamilyFont = { 0x1010532, 0x1010533, 0x101053f, 0x101056f, 0x1010570, 0x7f0300da, 0x7f0300e2, 0x7f0300e3, 0x7f0300e4, 0x7f030212 };
+        public static final int[] FontFamilyFont = { 0x1010532, 0x1010533, 0x101053f, 0x101056f, 0x1010570, 0x7f0300da, 0x7f0300e2, 0x7f0300e3, 0x7f0300e4, 0x7f03020e };
         public static final int FontFamilyFont_android_font = 0;
         public static final int FontFamilyFont_android_fontWeight = 1;
         public static final int FontFamilyFont_android_fontStyle = 2;

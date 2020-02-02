@@ -73,7 +73,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_top">
 
-        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/end_capstone1_height_editText"
             android:layout_width="match_parent"
             android:layout_height="46dp" />
@@ -120,7 +120,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_top">
 
-        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/end_capstone2_height_editText"
             android:layout_width="match_parent"
             android:layout_height="46dp" />
