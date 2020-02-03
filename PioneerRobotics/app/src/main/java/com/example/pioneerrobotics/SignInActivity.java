@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener{
@@ -32,7 +33,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         mAuth = FirebaseAuth.getInstance();
         editTextTeamName = findViewById(R.id.team_name);
         editTextPassword = findViewById(R.id.password_signIn);
-
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         findViewById(R.id.sign_up_textview).setOnClickListener(this);
         findViewById(R.id.login_button).setOnClickListener(this);
     }

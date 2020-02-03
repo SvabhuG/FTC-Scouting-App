@@ -37,6 +37,64 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout3"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="228dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="132dp"
+        android:hint="Team Number"
+        app:boxStrokeColor="#a91101"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toTopOf="@+id/guideline_top">
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/team_number_analytics"
+            android:layout_width="match_parent"
+            android:layout_height="46dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="228dp"
+        android:layout_height="51dp"
+        android:hint="Event"
+        app:boxStrokeColor="#a91101"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toTopOf="@+id/guideline_top">
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/eventEditTextAnalytics"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="228dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="68dp"
+        android:hint="Team Name"
+        app:boxStrokeColor="#a91101"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toTopOf="@+id/guideline_top">
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/team_name_analytics"
+            android:layout_width="match_parent"
+            android:layout_height="46dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_top"
         android:layout_width="match_parent"
@@ -60,12 +118,14 @@
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barchart"
-        android:layout_width="373dp"
-        android:layout_height="181dp"
+        android:layout_width="360dp"
+        android:layout_height="318dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toTopOf="@+id/guideline_top" />
+        app:layout_constraintTop_toTopOf="@+id/guideline_top"
+        app:layout_constraintVertical_bias="0.706" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

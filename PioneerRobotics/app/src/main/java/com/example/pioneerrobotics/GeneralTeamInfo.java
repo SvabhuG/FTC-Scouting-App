@@ -41,10 +41,11 @@ public class GeneralTeamInfo extends AppCompatActivity {
     public static TextInputEditText roundEditText;
     public static AutoCompleteTextView teamNameEditText, teamNumberEditText, eventEditText, scorer;
     private DatabaseReference mDatabase;
-    public ArrayList<eventData> eventsOccurred = new ArrayList<>();
+    public static ArrayList<eventData> eventsOccurred = new ArrayList<>();
     List<String> eventNames = new ArrayList<>();
     List<String> teamNames = new ArrayList<>();
     List<String> teamNumbers = new ArrayList<>();
+    public static ArrayAdapter<String> eventAdapter;
     int count;
 
 
@@ -63,7 +64,6 @@ public class GeneralTeamInfo extends AppCompatActivity {
         roundEditText = findViewById(R.id.roundEditText);
         add_event_info = findViewById(R.id.add_event_page_button);
         analyticsOpen = findViewById(R.id.analytics);
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         mDatabase = FirebaseDatabase.getInstance().getReference("events");
 
 
@@ -84,8 +84,7 @@ public class GeneralTeamInfo extends AppCompatActivity {
 
         ArrayAdapter<String> scorerAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,scorers);
 
-
-        ArrayAdapter<String> eventAdapter = new ArrayAdapter<>(this,
+        eventAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,eventNames);
 
         eventEditText.setAdapter(eventAdapter);
@@ -244,8 +243,9 @@ public class GeneralTeamInfo extends AppCompatActivity {
                         String teamName = teamSnapshot.child("Team Name").getValue(String.class);
                         String teamNum = teamSnapshot.child("Team Number").getValue(String.class);
                         String event = teamSnapshot.child("Event").getValue(String.class);
-                        eventData eventData = new eventData(teamName,teamNum, event);
-                        eventsOccurred.add(eventData);
+
+                        eventData EventData = new eventData(teamName,teamNum,event);
+                        eventsOccurred.add(EventData);
                     }
                     String[] str = eventSnapshot.getRef().toString().split("/");
                     eventNames.add(str[str.length-1].replace("%20"," "));

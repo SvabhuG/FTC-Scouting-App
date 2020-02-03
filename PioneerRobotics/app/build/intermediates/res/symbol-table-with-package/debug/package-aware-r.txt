@@ -1180,6 +1180,7 @@ id end_padder
 id enterAlways
 id enterAlwaysCollapsed
 id eventEditText
+id eventEditTextAnalytics
 id eventText
 id exitUntilCollapsed
 id expand_activities_button
@@ -1311,8 +1312,10 @@ id tag_unhandled_key_listeners
 id teamNameText
 id teamNumberText
 id team_name
+id team_name_analytics
 id team_name_signUp
 id team_number
+id team_number_analytics
 id teleScore
 id tele_delivered_add
 id tele_delivered_minus
