@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pioneerrobotics">
+    package="scouting.app.pioneerrobotics">
 
     <application
         android:allowBackup="true"
@@ -9,19 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignInActivity">
+        <activity android:name="scouting.app.pioneerrobotics.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddEventListActivity" ></activity>
-        <activity android:name=".SignUpActivity" ></activity>
-        <activity android:name=".GeneralTeamInfo" ></activity>
-        <activity android:name=".MainActivity" ></activity>
-        <activity android:name=".Analytics" ></activity>
-        <activity android:name=".PostMatchActivity"></activity>
+        <activity android:name="scouting.app.pioneerrobotics.AddEventListActivity" ></activity>
+        <activity android:name="scouting.app.pioneerrobotics.SignUpActivity" ></activity>
+        <activity android:name="scouting.app.pioneerrobotics.GeneralTeamInfo" ></activity>
+        <activity android:name="scouting.app.pioneerrobotics.MainActivity" ></activity>
+        <activity android:name="scouting.app.pioneerrobotics.Analytics" ></activity>
+        <activity android:name="scouting.app.pioneerrobotics.PostMatchActivity"></activity>
     </application>
 
 </manifest>

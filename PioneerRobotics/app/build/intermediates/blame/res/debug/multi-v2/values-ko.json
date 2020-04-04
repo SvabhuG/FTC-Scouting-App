@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\svabh\\AndroidStudioProjects\\FTC-Scouting-App\\PioneerRobotics\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ko\\values-ko.xml",
+            "outputFile": "C:\\Users\\svabh\\Documents\\FTC-Scouting-App\\PioneerRobotics\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ko\\values-ko.xml",
             "map": [
                 {
                     "source": "C:\\Users\\svabh\\.gradle\\caches\\transforms-2\\files-2.1\\322b93496bc0a8d8306a6c7db877b529\\appcompat-1.0.2\\res\\values-ko\\values-ko.xml",
@@ -38,23 +38,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\svabh\\.gradle\\caches\\transforms-2\\files-2.1\\bfcee8f343cc54539c725cd290739809\\jetified-play-services-basement-17.0.0\\res\\values-ko\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "247",
-                        "endColumns": "179",
-                        "endOffsets": "426"
-                    },
-                    "to": {
-                        "startLines": "37",
-                        "startColumns": "4",
-                        "startOffsets": "3731",
-                        "endColumns": "179",
-                        "endOffsets": "3906"
-                    }
-                },
-                {
                     "source": "C:\\Users\\svabh\\.gradle\\caches\\transforms-2\\files-2.1\\75e70da198df93807ed751edcaee621f\\core-1.0.1\\res\\values-ko\\values-ko.xml",
                     "from": {
                         "startLines": "2",
@@ -69,6 +52,23 @@
                         "startOffsets": "5192",
                         "endColumns": "100",
                         "endOffsets": "5288"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\svabh\\.gradle\\caches\\transforms-2\\files-2.1\\1b5162be92c89562749f2bc7d62c76c1\\jetified-play-services-basement-17.0.0\\res\\values-ko\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "179",
+                        "endOffsets": "426"
+                    },
+                    "to": {
+                        "startLines": "37",
+                        "startColumns": "4",
+                        "startOffsets": "3731",
+                        "endColumns": "179",
+                        "endOffsets": "3906"
                     }
                 }
             ]

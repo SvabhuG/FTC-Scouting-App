@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context="scouting.app.pioneerrobotics.MainActivity"
     android:background="#FFFFFF">
 
 
@@ -56,6 +56,17 @@
             android:layout_height="46dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:id="@+id/enter_analytics"
+        android:layout_width="235dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/rounded_corners"
+        android:text="Enter"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
@@ -125,7 +136,7 @@
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_top"
-        app:layout_constraintVertical_bias="0.706" />
+        app:layout_constraintVertical_bias="0.979" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

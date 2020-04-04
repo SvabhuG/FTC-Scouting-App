@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:169451964996:android:747a3170a6ff68a1600a11",
         "android_client_info": {
-          "package_name": "com.example.pioneerrobotics"
+          "package_name": "scouting.app.pioneerrobotics"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "169451964996-v4okn4juuob1lmhsqkcmh5405ql9m154.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.pioneerrobotics",
+            "package_name": "scouting.app.pioneerrobotics",
             "certificate_hash": "aea783fb25bccc837e1c400323661ed8fb6d2458"
           }
         },
@@ -26,7 +26,7 @@
           "client_id": "169451964996-5g6l5frta8bboterksmj6cc7g48jn9f4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.pioneerrobotics",
+            "package_name": "scouting.app.pioneerrobotics",
             "certificate_hash": "6d692713165eb257e58327b51b84db007c37f915"
           }
         },

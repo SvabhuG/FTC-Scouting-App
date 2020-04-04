@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pioneerrobotics.test" >
+    package="scouting.app.pioneerrobotics.test" >
 
     <uses-sdk
         android:minSdkVersion="23"
@@ -10,8 +10,8 @@
         android:name="androidx.test.runner.AndroidJUnitRunner"
         android:functionalTest="false"
         android:handleProfiling="false"
-        android:label="Tests for com.example.pioneerrobotics"
-        android:targetPackage="com.example.pioneerrobotics" />
+        android:label="Tests for scouting.app.pioneerrobotics"
+        android:targetPackage="scouting.app.pioneerrobotics" />
 
     <uses-permission android:name="android.permission.REORDER_TASKS" />
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pioneerrobotics"
+    package="scouting.app.pioneerrobotics"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -26,19 +26,19 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.example.pioneerrobotics.SignInActivity" >
+        <activity android:name="scouting.app.pioneerrobotics.SignInActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.pioneerrobotics.AddEventListActivity" />
-        <activity android:name="com.example.pioneerrobotics.SignUpActivity" />
-        <activity android:name="com.example.pioneerrobotics.GeneralTeamInfo" />
-        <activity android:name="com.example.pioneerrobotics.MainActivity" />
-        <activity android:name="com.example.pioneerrobotics.Analytics" />
-        <activity android:name="com.example.pioneerrobotics.PostMatchActivity" />
+        <activity android:name="scouting.app.pioneerrobotics.AddEventListActivity" />
+        <activity android:name="scouting.app.pioneerrobotics.SignUpActivity" />
+        <activity android:name="scouting.app.pioneerrobotics.GeneralTeamInfo" />
+        <activity android:name="scouting.app.pioneerrobotics.MainActivity" />
+        <activity android:name="scouting.app.pioneerrobotics.Analytics" />
+        <activity android:name="scouting.app.pioneerrobotics.PostMatchActivity" />
 
         <service
             android:name="com.google.firebase.components.ComponentDiscoveryService"
@@ -85,7 +85,7 @@
 
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
-            android:authorities="com.example.pioneerrobotics.firebaseinitprovider"
+            android:authorities="scouting.app.pioneerrobotics.firebaseinitprovider"
             android:exported="false"
             android:initOrder="100" />
 
